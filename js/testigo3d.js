@@ -12,7 +12,7 @@ const TX = {
     intro: "Más de 150 metros de roca extraídos en 2015 en Cau (Alicante) registran todo el Aptiense. Baja por el testigo para recorrer el inicio del evento anóxico, metro a metro.",
     note: "Esquema ilustrativo: capas, posiciones y curva de δ13C aproximadas. Se sustituirán por los datos reales del sondeo.",
     start: ["Empieza el descenso", "Haz scroll para bajar por el testigo, de las capas más modernas a las más antiguas."],
-    depth: "m de profundidad", legend: "δ13C (esquema)", pxs: "Desarrollado por PXS",
+    depth: "m de profundidad", legend: "δ13C (esquema)", pxs: "Desarrollado por PXS", pxsTitle: "Escribir a PXS para pedir una web así",
     m: [
       [10, "Aptiense superior", "La parte más moderna del testigo, cuando el océano ya se había recuperado del evento."],
       [58, "Fase volcánica principal", "Los isótopos de osmio indican que la gran actividad de Ontong Java llegó después del inicio del OAE 1a (Martínez-Rodríguez et al., 2021)."],
@@ -27,7 +27,7 @@ const TX = {
     intro: "Over 150 metres of rock drilled in 2015 at Cau (Alicante) record the whole Aptian. Scroll down the core to travel through the onset of the anoxic event, metre by metre.",
     note: "Illustrative sketch: layers, positions and the δ13C curve are approximate. They will be replaced with the real core data.",
     start: ["Start the descent", "Scroll to travel down the core, from the youngest to the oldest layers."],
-    depth: "m depth", legend: "δ13C (sketch)", pxs: "Developed by PXS",
+    depth: "m depth", legend: "δ13C (sketch)", pxs: "Developed by PXS", pxsTitle: "Email PXS to ask for a website like this",
     m: [
       [10, "Late Aptian", "The youngest part of the core, after the ocean had recovered from the event."],
       [58, "Main volcanic phase", "Osmium isotopes show that the main Ontong Java activity came after the onset of OAE 1a (Martínez-Rodríguez et al., 2021)."],
@@ -76,12 +76,12 @@ function injectCSS() {
 .c3-depth small{font:500 .72rem "IBM Plex Mono",monospace;opacity:.7;margin-left:6px}
 .c3-leg{font:500 .72rem "IBM Plex Mono",monospace;color:#ff8a4c;display:flex;align-items:center;gap:6px}
 .c3-leg::before{content:"";width:22px;height:3px;background:#ff8a4c;border-radius:2px}
-.c3-card{position:absolute;left:max(16px,env(safe-area-inset-left,0px));bottom:max(20px,env(safe-area-inset-bottom,0px));max-width:min(400px,calc(100% - 32px));background:rgba(11,17,22,.78);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.16);border-left:4px solid var(--mc,#ff8a4c);border-radius:14px;padding:16px 18px;display:grid;gap:6px}
+.c3-card{position:absolute;left:max(16px,env(safe-area-inset-left,0px));bottom:calc(max(16px,env(safe-area-inset-bottom,0px)) + 46px);max-width:min(400px,calc(100% - 32px));background:rgba(11,17,22,.78);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.16);border-left:4px solid var(--mc,#ff8a4c);border-radius:14px;padding:16px 18px;display:grid;gap:6px}
 .c3-card .k{font:500 .7rem "IBM Plex Mono",monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--mc,#ff8a4c)}
 .c3-card h3{font:700 1.3rem/1.15 "Bricolage Grotesque",sans-serif;color:#fff;margin:0}
 .c3-card p{font-size:.92rem;color:rgba(238,242,244,.88);margin:0}
 .c3-fallback{padding-bottom:clamp(48px,7vw,96px)}
-.c3-pxs{position:absolute;top:16px;left:max(16px,env(safe-area-inset-left,0px));z-index:2;font:600 .78rem/1 "Public Sans",system-ui,sans-serif;letter-spacing:.02em;color:#eef2f4;text-decoration:none;padding:8px 12px;border-radius:999px;background:rgba(11,17,22,.6);border:1px solid rgba(255,255,255,.25);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:background .15s,border-color .15s}
+.c3-pxs{position:absolute;bottom:max(16px,env(safe-area-inset-bottom,0px));left:max(16px,env(safe-area-inset-left,0px));z-index:2;font:600 .78rem/1 "Public Sans",system-ui,sans-serif;letter-spacing:.02em;color:#eef2f4;text-decoration:none;padding:8px 12px;border-radius:999px;background:rgba(11,17,22,.6);border:1px solid rgba(255,255,255,.25);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:background .15s,border-color .15s}
 .c3-pxs:hover,.c3-pxs:focus-visible{background:rgba(255,138,76,.18);border-color:#ff8a4c}
 @media (max-width:700px){.c3-lab span{font-size:.7rem}.c3-hud{top:12px}}`;
   document.head.appendChild(st);
@@ -206,7 +206,7 @@ function attach() {
   host.innerHTML = head + `<div class="c3-scroll"><div class="c3-stage"><div class="c3-canvas"></div><div class="c3-labels" aria-hidden="true">` +
     L.m.map((mk, i) => `<div class="c3-lab" style="color:${MCOL[i]}"><i></i><span>${mk[1]}</span></div>`).join("") +
     `</div><div class="c3-hud" aria-hidden="true"><span class="c3-depth">0 <small>${L.depth}</small></span><span class="c3-leg">${L.legend}</span></div>` +
-    `<a class="c3-pxs" href="#pxs">${L.pxs} →</a><div class="c3-card" aria-live="polite"><span class="k"></span><h3></h3><p></p></div></div></div>`;
+    `<a class="c3-pxs" href="#pxs" title="${L.pxsTitle}">${L.pxs} →</a><div class="c3-card" aria-live="polite"><span class="k"></span><h3></h3><p></p></div></div></div>`;
   if (!S) {
     S = build();
     addEventListener("pointermove", (ev) => { S.px = ev.clientX / innerWidth * 2 - 1; }, { passive: true });
@@ -219,6 +219,8 @@ function attach() {
   S.labels = [...host.querySelectorAll(".c3-lab")];
   S.card = host.querySelector(".c3-card");
   S.depthEl = host.querySelector(".c3-depth");
+  const px = host.querySelector(".c3-pxs");
+  if (px && window.SECABA && window.SECABA.pxsMailto) px.addEventListener("click", (ev) => { ev.preventDefault(); location.href = window.SECABA.pxsMailto(lang()); });
   S.last = -2;
   host.querySelector(".c3-canvas").appendChild(S.renderer.domElement);
   S.ro.observe(S.stage); S.io.observe(S.stage);

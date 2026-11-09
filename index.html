@@ -228,15 +228,22 @@ section{padding-block:clamp(64px,9vw,120px)}
 .contact .who{font-size:.92rem; opacity:.75; max-width:70ch}
 .contact .mail{display:flex; flex-wrap:wrap; gap:10px; align-items:center; font:500 .95rem var(--f-mono); overflow-wrap:anywhere}
 .btn{font:500 .72rem var(--f-mono); text-transform:uppercase; padding:8px 14px; border-radius:999px; border:0; background:var(--warm); color:#fff; cursor:pointer}
-footer{background:var(--ink); color:var(--bg); border-top:1px solid rgba(255,255,255,.12)}
-footer .wrap{padding-block:24px; display:grid; gap:6px; font-size:.8rem;}
-footer .wrap>span{opacity:.75}
+.contact .fund{display:grid; gap:6px; font-size:.8rem; margin-top:clamp(20px,3vw,32px); padding-top:clamp(20px,3vw,28px); border-top:1px solid color-mix(in srgb,currentColor 18%,transparent)}
+.contact .fund>span{opacity:.75}
+/* Franja de PXS: color propio (degradado de la web) para que destaque */
+.pxsband{background:linear-gradient(118deg,#1d4f8f 0%,#3b5ea8 22%,#c2410c 62%,#9b1c1c 100%); color:#fff}
+.pxsband .wrap{padding-block:clamp(28px,4vw,48px)}
+.pxsband .pxs{margin-top:0!important; border-color:rgba(255,255,255,.45)!important; background:rgba(0,0,0,.12)}
+.pxsband #pxs-reveal{background:#fff!important; color:#9b1c1c!important; border-color:#fff!important; box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.pxsband #pxs-reveal:hover{transform:translateY(-1px)}
+.pxsband #pxs-contact a{color:#fff!important}
+
 </style>
 </head>
 <body>
 <div class="heat" aria-hidden="true"><i id="heat"></i></div>
 <div id="app"></div>
-<script src="content.js"></script>
+<script src="content.js?v=20261109c"></script>
 <script>
 (function(){
   var S=SECABA, e=S.esc, lang=S.getLang();
@@ -298,8 +305,8 @@ footer .wrap>span{opacity:.75}
     h+='<section id="cronograma" style="padding-top:0"><div class="wrap"><span class="mono kick">'+e(n.plan)+' · '+e(L.duration)+'</span><h2 class="h2">'+e(L.planT)+'</h2>'+g+'<div class="split" style="margin-top:72px"><h2 class="h2">'+e(L.recordT)+'</h2><div class="rec">'+S.record.map(function(r){return '<div><b>'+r.y+'</b><span>'+e(r[lang])+'</span></div>';}).join('')+'</div></div></div></section>';
     h+='<section id="equipo" style="padding-top:0"><div class="wrap"><span class="mono kick">'+e(n.team)+'</span><h2 class="h2">'+e(L.teamT)+'</h2>'+['research','work','collab'].map(function(k){return '<p class="mono gt">'+e(L.teamGroups[k])+'</p><div class="team">'+S.people[k].map(function(p){return '<div class="pp"><h3>'+e(p.n)+(p.r?'<sup>'+p.r+'</sup>':'')+'</h3><p>'+e(p.i)+' · '+e(p.f[lang])+'</p>'+(p.o?'<a href="https://orcid.org/'+p.o+'" target="_blank" rel="noopener noreferrer">ORCID '+p.o+'</a>':'')+'</div>';}).join('')+'</div>';}).join('')+'</div></section>';
     h+='<section id="noticias" style="padding-top:0"><div class="wrap"><span class="mono kick">'+e(n.news)+'</span><h2 class="h2">'+e(L.newsT)+'</h2><p class="empty">'+e(L.newsEmpty)+'</p><div class="out">'+L.outreach.map(function(o){return '<div><b>'+e(o.k)+'</b><p>'+e(o.d)+'</p></div>';}).join('')+'</div><div class="q" style="margin-top:32px"><span class="mono">'+e(L.dataT)+'</span><p style="color:var(--ink)">'+e(L.data)+'</p><a href="'+S.ruja+'">'+e(L.dataLink)+' →</a></div></div></section>';
-    h+='<section id="contacto" class="contact"><div class="wrap cgrid"><h2>'+e(n.contact)+'</h2><p class="who">'+e(S.contact)+' · '+e(L.contactPlace)+'</p></div></section></main>';
-    h+='<footer><div class="wrap">'+S.logos()+'<span>'+e(L.fundingLine)+'</span><span>'+e(L.funder)+' · '+e(L.photoNote)+'</span>'+S.credit(lang)+'</div></footer>';
+    h+='<section id="contacto" class="contact"><div class="wrap cgrid"><h2>'+e(n.contact)+'</h2><p class="who">'+e(S.contact)+' · '+e(L.contactPlace)+'</p></div><div class="wrap fund">'+S.logos()+'<span>'+e(L.fundingLine)+'</span><span>'+e(L.funder)+' · '+e(L.photoNote)+'</span></div></section></main>';
+    h+='<footer class="pxsband"><div class="wrap">'+S.credit(lang)+'</div></footer>';
     document.getElementById('app').innerHTML=h;
     setHdr();
     window.dispatchEvent(new CustomEvent('secaba:render',{detail:{lang:lang}}));
@@ -349,7 +356,7 @@ footer .wrap>span{opacity:.75}
   render();
 })();
 </script>
-<script type="module" src="js/cocolito.js"></script>
-<script type="module" src="js/testigo3d.js"></script>
+<script type="module" src="js/cocolito.js?v=20261109c"></script>
+<script type="module" src="js/testigo3d.js?v=20261109c"></script>
 </body>
 </html>
