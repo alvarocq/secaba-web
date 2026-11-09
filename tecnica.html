@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SECABA · Técnica</title>
+<meta name="description" content="SECABA (PID2023-151264NB-I00): información técnica para especialistas. Antecedentes, objetivos, metodología, plan de trabajo, laboratorios y bibliografía.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Maquetación: documento técnico. Banda azul océano arriba, índice lateral fijo y una columna de lectura con tablas, códigos de tarea y referencias */
+:root{
+  color-scheme:light;
+  --bg:#f5f7f8; --surface:#ffffff; --ink:#0b2433; --muted:#4d6270; --line:#d5dee3; --soft:#eef3f6;
+  --ocean:#0c3f5a; --deep:#082d41; --accent:#b7791f; --on-ocean:#eef4f7; --bar:#0c3f5a;
+  --f-disp:"Source Serif 4", Georgia, serif; --f-body:"IBM Plex Sans", system-ui, sans-serif; --f-mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#071b26; --surface:#0c2532; --ink:#e3ecf0; --muted:#9db2bd; --line:#1d3a49; --soft:#0f2c3b; --ocean:#0f4a69; --deep:#051520; --accent:#f2b532; --bar:#6fb3d6; color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#071b26; --surface:#0c2532; --ink:#e3ecf0; --muted:#9db2bd; --line:#1d3a49; --soft:#0f2c3b; --ocean:#0f4a69; --deep:#051520; --accent:#f2b532; --bar:#6fb3d6; color-scheme:dark}
+*{box-sizing:border-box}
+:root{padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth; scroll-padding-top:20px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0; background:var(--bg); color:var(--ink); font:16px/1.65 var(--f-body)}
+img{max-width:100%; height:auto; display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+[hidden]{display:none!important}
+h1,h2,h3{font-family:var(--f-disp); margin:0; line-height:1.2; text-wrap:balance}
+h2{font-size:clamp(1.5rem,2.6vw,1.95rem); font-weight:700}
+h3{font-size:1.12rem; font-weight:600}
+p{margin:0}
+.mono{font-family:var(--f-mono); font-size:.8rem}
+.wrap{max-width:1200px; margin:0 auto; padding-left:max(16px,env(safe-area-inset-left,0px)); padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+.band{background:var(--deep); color:var(--on-ocean)}
+.band .top{display:flex; gap:12px; align-items:center; flex-wrap:wrap; padding-block:12px; border-bottom:1px solid rgba(255,255,255,.12)}
+.band .brand{font:700 1.1rem var(--f-disp)}
+.band .tag{font:500 .7rem var(--f-mono); letter-spacing:.06em; text-transform:uppercase; padding:3px 8px; border-radius:3px; background:rgba(255,255,255,.12)}
+.tools{display:flex; gap:8px; margin-left:auto; flex-wrap:wrap}
+.btn{display:inline-flex; align-items:center; gap:6px; font:500 .76rem var(--f-mono); padding:6px 10px; border-radius:4px; border:1px solid rgba(255,255,255,.4); background:transparent; color:var(--on-ocean); cursor:pointer; text-decoration:none}
+.btn:hover{background:rgba(255,255,255,.12)}
+.btn svg{width:14px; height:14px}
+.band .head{padding-block:clamp(28px,5vw,56px) clamp(24px,4vw,40px); display:grid; gap:12px; max-width:900px}
+.band .eyebrow{font:500 .74rem var(--f-mono); letter-spacing:.08em; text-transform:uppercase; color:#f2b532}
+.band h1{font-size:clamp(1.6rem,3.4vw,2.6rem); font-weight:700}
+.band .en{color:rgba(238,244,247,.75); font-style:italic; font-family:var(--f-disp); font-size:1.05rem}
+
+.layout{display:grid; grid-template-columns:230px minmax(0,1fr); gap:clamp(24px,4vw,56px); padding-block:40px 64px}
+@media (max-width:900px){.layout{grid-template-columns:1fr}}
+.toc{position:sticky; top:16px; align-self:start; display:grid; gap:2px; font-size:.88rem}
+.toc a{text-decoration:none; color:var(--muted); padding:5px 10px; border-left:2px solid var(--line)}
+.toc a:hover,.toc a.on{color:var(--ink); border-left-color:var(--accent)}
+.toc .lbl{font:500 .7rem var(--f-mono); letter-spacing:.08em; text-transform:uppercase; color:var(--muted); padding:0 10px 8px}
+@media (max-width:900px){.toc{position:relative; top:0; grid-auto-flow:column; overflow-x:auto; padding-bottom:6px}.toc .lbl{display:none}.toc a{white-space:nowrap; border-left:0; border-bottom:2px solid var(--line)}}
+main{min-width:0; display:grid; gap:56px}
+section{display:grid; gap:16px; scroll-margin-top:16px}
+section>h2 .n{font:500 .9rem var(--f-mono); color:var(--accent); margin-right:10px; vertical-align:middle}
+.prose{display:grid; gap:.9em; max-width:76ch}
+.prose em{font-style:italic}
+.card{background:var(--surface); border:1px solid var(--line); border-radius:6px; padding:18px 20px; display:grid; gap:8px}
+.hl{border-left:3px solid var(--accent)}
+.tbl{overflow-x:auto; border:1px solid var(--line); border-radius:6px; background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:.88rem}
+th,td{text-align:left; vertical-align:top; padding:9px 12px; border-bottom:1px solid var(--line)}
+th{font:500 .72rem var(--f-mono); letter-spacing:.05em; text-transform:uppercase; color:var(--muted); background:var(--soft)}
+tr:last-child td{border-bottom:0}
+td.k{font-family:var(--f-mono); font-size:.8rem; white-space:nowrap; color:var(--accent)}
+.facts{display:grid; grid-template-columns:max-content 1fr; gap:0; border:1px solid var(--line); border-radius:6px; background:var(--surface); overflow:hidden}
+.facts dt,.facts dd{margin:0; padding:9px 14px; border-bottom:1px solid var(--line); font-size:.9rem}
+.facts dt{font:500 .74rem var(--f-mono); color:var(--muted); background:var(--soft); text-transform:uppercase; letter-spacing:.04em}
+.facts dd{min-width:0; overflow-wrap:anywhere}
+@media (max-width:600px){.facts{grid-template-columns:1fr}.facts dt{border-bottom:0; padding-bottom:2px}}
+.todo{color:#c2410c}
+.goals{display:grid; gap:12px}
+.og{background:var(--surface); border:1px solid var(--line); border-radius:6px; padding:16px 18px; display:grid; gap:8px}
+.og .c{font:600 .78rem var(--f-mono); color:var(--accent)}
+.og ul{margin:0; padding-left:1.1em; display:grid; gap:4px; font-size:.9rem}
+.og li b{font-family:var(--f-mono); font-weight:500; font-size:.78rem; margin-right:6px}
+.gantt td.q{padding:9px 0; min-width:26px; text-align:center}
+.gantt td.q span{display:block; height:10px; background:var(--bar); margin-inline:1px}
+.gantt td.q span.s{border-radius:5px 0 0 5px} .gantt td.q span.e{border-radius:0 5px 5px 0} .gantt td.q span.s.e{border-radius:5px}
+.gantt th.q{text-align:center; padding:9px 0}
+.ms{display:flex; flex-wrap:wrap; gap:6px 18px; font-size:.86rem}
+.ms b{font-family:var(--f-mono); color:var(--accent); margin-right:6px}
+.refs{display:grid; gap:10px; padding-left:0; list-style:none; margin:0}
+.refs li{font-size:.9rem; padding-left:14px; border-left:2px solid var(--line)}
+.refs a{color:var(--muted); font-family:var(--f-mono); font-size:.78rem; overflow-wrap:anywhere}
+.refs a:hover{color:var(--accent)}
+.figs{display:grid; gap:28px}
+.small{max-width:560px}
+.empty{border:1px dashed var(--line); border-radius:6px; padding:16px; color:var(--muted); font-size:.9rem}
+footer{background:var(--deep); color:var(--on-ocean); font-size:.82rem}
+footer .wrap{padding-block:24px; display:grid; gap:12px}
+footer span{opacity:.8}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script src="content.js"></script>
+<script>
+(function(){
+  var S=SECABA, e=S.esc, lang=S.getLang();
+  try{var st=localStorage.getItem('secaba-theme'); if(st==='light'||st==='dark') document.documentElement.setAttribute('data-theme',st);}catch(_){}
+  function isDark(){var t=document.documentElement.getAttribute('data-theme'); return t?t==='dark':matchMedia('(prefers-color-scheme: dark)').matches;}
+  var SUN='<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+  var MOON='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>';
+
+  // Códigos de miembros, como en la memoria
+  var codes={"José Manuel Castro Jiménez":"JMC","Ginés A. de Gea Guillén":"GAG","María Luisa Quijano López":"MLQ","Pedro A. Ruiz Ortiz":"PARO","Cristina Sequero López":"CSL","Luis O’Dogherty Luy":"LOL","Richard D. Pancost":"RDP","B. David A. Naafs":"DN","Claudia Sosa Montes de Oca":"CSM","Lawrence Percival":"LP","Rafael Martínez-Rodríguez":"RMR","Sandro Froehner":"SF","Josep A. Moreno-Bedmar":"JAMB","Miguel Company Sempere":"MC","Sietske Batenburg":"SB","Marta Rodrigo Gámiz":"MR","Mathieu Martinez":"MM","Vicente López Sánchez-Vizcaíno":"VLS","Helmut Weissert":"HW","Ian Jarvis":"IJ","David Selby":"DS"};
+
+  // Tareas del cronograma (trimestres 1–12)
+  var tasks=[
+    ["MOE0a","Trabajo de campo, muestreo del testigo y preparación de muestras","Fieldwork, core sampling and sample preparation","JMC, GAG, MLQ, CSL",1,4],
+    ["MOE0b","Revisión bibliográfica","Literature review","Todo el equipo / Whole team",1,12],
+    ["MOE1-2.1","Estudios paleontológicos","Palaeontological studies","GAG, LOL · JAMB, MC",3,8],
+    ["MOE1-2.2","Isótopos estables de C y O","C and O stable isotopes","MLQ, GAG, CSL, PARO",3,7],
+    ["MOE1-2.3","Integración de bioestratigrafía e isótopos","Integration of biostratigraphy and isotopes","JMC, GAG, MLQ, CSL, PARO, LOL · JAMB, MC, IJ, HW",6,8],
+    ["MOE3.1","Calcimetrías","Calcimetry","MLQ, GAG",3,5],
+    ["MOE3.2","Susceptibilidad magnética","Magnetic susceptibility","JMC, GAG, CSL",3,5],
+    ["MOE3.3","Astrocronología","Astrochronology","JMC, CSL, PARO · RMR, MM, SB",3,8],
+    ["MOE4.1","Geoquímica orgánica (biomarcadores)","Organic geochemistry (biomarkers)","MLQ, JMC, CSL · RDP, DN, MR, CSM, SF",2,8],
+    ["MOE4.2","Elementos traza y mayoritarios","Trace and major elements","MLQ, JMC · LP",3,6],
+    ["MOE4.3","Carbono orgánico total (TOC)","Total organic carbon (TOC)","CSL",3,6],
+    ["MOE4.4","Mineralogía","Mineralogy","JMC, GAG · VLS",4,7],
+    ["MOE4.5a","Paleotemperaturas: biomarcadores","Palaeotemperatures: biomarkers","MLQ, CSL · MR, RDP, DN",6,8],
+    ["MOE4.5b","Paleotemperaturas: isótopos de oxígeno","Palaeotemperatures: oxygen isotopes","GAG, JMC",6,8],
+    ["MOE5.1","Asociaciones de nanofósiles calcáreos","Calcareous nannofossil assemblages","GAG · HW",3,8],
+    ["MOE5.2","Ecoestratigrafía de foraminíferos y radiolarios","Foraminifera and radiolarian ecostratigraphy","GAG, LOL · HW",3,8],
+    ["MOE5.3","Evolución de las asociaciones de biomarcadores","Biomarker assemblage evolution","MLQ, JMC, CSL",3,8],
+    ["MOE6.1","Isótopos de Os y Li, concentraciones de Hg","Os and Li isotopes, Hg concentrations","JMC · LP, DS",4,8],
+    ["MOE6.2","δ13C en concreciones y biomarcadores específicos","δ13C of concretions and specific biomarkers","GAG, MLQ, CSL",3,6],
+    ["MOE6.3","Mineralogía de depósitos volcanoclásticos (Carbonero)","Mineralogy of volcaniclastic deposits (Carbonero)","JMC · VLS",4,7],
+    ["MOE6.4","Isótopos de biomarcadores específicos","Compound-specific biomarker isotopes","MLQ · RDP, DN, CSM",6,8],
+    ["MOE7-8a","Interpretación y discusión de datos","Data interpretation and discussion","Todo el equipo / Whole team",3,12],
+    ["MOE7-8b","Congresos y reuniones científicas","Conferences and meetings","Todo el equipo / Whole team",4,10],
+    ["MOE7-8c","Artículos científicos","Scientific papers","Todo el equipo / Whole team",5,12],
+    ["MOE7-8d","Difusión y divulgación","Dissemination and outreach","Todo el equipo / Whole team",8,12]
+  ];
+
+  var refs=[
+    ["Castro, J.M., Ruiz-Ortiz, P.A., de Gea, G.A., Aguado, R., Jarvis, I., Weissert, H., et al., 2021. Paleoceanography and Paleoclimatology 36(3), 1–26.","10.1029/2020PA004004"],
+    ["Martínez-Rodríguez, R., Batenburg, S., Castro, J.M., de Gea, G.A., Nieto, L., Ruiz-Ortiz, P.A., Robinson, S., 2024. Global and Planetary Change.","10.1016/j.gloplacha.2024.104361"],
+    ["Martínez-Rodríguez, R., Selby, D., Castro, J.M., de Gea, G.A., Nieto, L.M., Ruiz-Ortiz, P.A., 2021. Global and Planetary Change.","10.1016/j.gloplacha.2021.103652"],
+    ["Aguado, R., Company, M., O’Dogherty, L., Sandoval, J., Martinez, M., 2022. Marine Micropaleontology 173, 102114.","10.1016/j.marmicro.2022.102114"],
+    ["Martinez, M., Company, M., O’Dogherty, L., Aguado, R., et al., 2023. Earth-Science Reviews.","10.1016/j.earscirev.2023.104356"],
+    ["Martinez, M., Aguado, R., Company, M., Sandoval, J., O’Dogherty, L., 2020. Global and Planetary Change 195, 1–24.","10.1016/j.gloplacha.2020.103368"],
+    ["Adloff, M., Greene, S.E., Parkinson, I.J., Naafs, B.D.A., Preston, W., Ridgwell, A., Lunt, D.J., Castro, J.M., Monteiro, F.M., 2020. Earth and Planetary Science Letters 530, 115947.","10.1016/j.epsl.2019.115947"],
+    ["Castro, J.M., Froehner, S., Aguado, R., de Gea, G.A., Quijano, M.L., Naafs, B.D.A., Pancost, R., 2019. Global and Planetary Change.","10.1016/j.gloplacha.2019.103030"],
+    ["Naafs, B.D.A., Castro, J.M., de Gea, G.A., Quijano, M.L., Schmidt, D.N., Pancost, R.D., 2016. Nature Geoscience.","10.1038/NGEO2627"],
+    ["Quijano, M.L., Castro, J.M., Pancost, R.D., de Gea, G.A., Najarro, M., Aguado, R., et al., 2012. Palaeogeography, Palaeoclimatology, Palaeoecology 365–366, 276–293.",""],
+    ["Föllmi, K.B., 2012. Cretaceous Research.","10.1016/j.cretres.2011.12.005"],
+    ["Jenkyns, H.C., 2010. Geochemistry, Geophysics, Geosystems 11.","10.1029/2009GC002788"]
+  ];
+
+  var TX={
+    es:{
+      tag:"Versión técnica", back:"Versión divulgativa", light:"Claro", dark:"Oscuro", toLight:"Cambiar a modo claro", toDark:"Cambiar a modo oscuro",
+      toc:"Contenido",
+      s:{ficha:"Ficha del proyecto",ant:"Antecedentes",hip:"Hipótesis y novedad",obj:"Objetivos",met:"Metodología",mat:"Material de estudio",plan:"Plan de trabajo",equipo:"Equipo",labs:"Laboratorios y equipamiento",prev:"Resultados previos",prod:"Producción prevista",datos:"Gestión de datos",pubs:"Publicaciones del proyecto",refs:"Bibliografía destacada"},
+      f:[["Referencia","PID2023-151264NB-I00"],["Acrónimo","SECABA"],["Convocatoria","Proyectos de Generación de Conocimiento 2023 · Investigación no orientada, tipo B"],["Financiación","Ministerio de Ciencia, Innovación y Universidades · Agencia Estatal de Investigación"],["Entidad","Universidad de Jaén · Centro de Estudios Avanzados en Ciencias de la Tierra, Energía y Medio Ambiente (CEACTEMA)"],["Duración","3 años · <span class=\"todo\">fechas pendientes</span>"],["Áreas","Ciencias de la Tierra y del agua · Clima y atmósfera"],["Palabras clave","Estratigrafía, geoquímica, biomarcadores, elementos, isótopos, sedimentología, paleontología, paleoecología, paleoclimatología, cicloestratigrafía"]],
+      ant:[
+        "El clima de la Tierra ha oscilado entre estados de invernadero (greenhouse) y de nevera (icehouse). Las previsiones climáticas conllevan una incertidumbre intrínseca (Lewandowsky et al., 2015; IPCC, 2022), y el registro geológico ofrece episodios análogos que permiten acotar la respuesta del Sistema Tierra al aumento de gases de efecto invernadero (Ridgwell y Valdes, 2009).",
+        "Las causas más aceptadas de los eventos anóxicos oceánicos (OAEs) son temperaturas globales elevadas ligadas a gases de origen volcanogénico o metanogénico, que aceleraron el ciclo hidrológico, la meteorización y la productividad primaria (Jenkyns, 2010; Erba et al., 2015). No todas las perturbaciones del ciclo del carbono desembocaron en anoxia generalizada, por lo que Föllmi (2012) introdujo el concepto de episodios de cambio ambiental (EECs): Weissert, Faraoni, Taxy, Fallot, Paquier y, probablemente, el Episodio del Barremiense Medio y la excursión Intra-Furcata.",
+        "<b>Episodio Taxy (ISNE).</b> Barremiense superior (~124,3–121,4 Ma; Gale et al., 2020; Martinez et al., 2020). Excursión positiva de ~1‰ en δ13C asociada a niveles de black shales en torno al límite Barremiense/Aptiense, identificada en Cassis-La Bédoule, Angles, el Apenino Umbro-Marchigiano y, en la Cordillera Bética, en Barranco de Cavila. Se ha relacionado con el inicio del vulcanismo de Ontong Java (Charbonnier et al., 2018) o con el ciclo de gran excentricidad (~2,5 Ma; Martinez et al., 2022, 2023). Davidson et al. (2023) cuestionan la relación Ontong Java–OAE 1a.",
+        "<b>IFeNE (Intra-Feraudianus Negative Excursion).</b> Definida por el equipo (Aguado et al., 2022a, c) en Barranco de Cavila, con indicios en Río Argos-6 y posiblemente L’Alcoraia; al menos de carácter regional. Queda por determinar si es una fase inicial del Taxy o un EEC independiente.",
+        "<b>Episodio Selli (OAE 1a).</b> Aptiense inferior (~120 Ma). Excursión isotópica negativa y posterior positiva dividida en segmentos (Menegatti et al., 1998), calentamiento de 4–8 °C, crisis de los nannocónidos y anoxia generalizada. El equipo realizó la primera estimación cuantitativa de pCO₂ (≈1000 → 2200 ppm en ~300 ka; Naafs et al., 2016), propuso una doble fuente metanogénica y volcánica (Adloff et al., 2020) y mostró con isótopos de Os que la fase volcánica principal de Ontong Java es posterior al inicio del evento (Martínez-Rodríguez et al., 2021). La calibración astrocronológica de Cau estima 230 ka para el inicio (segmento Ap3), con una fase inicial de menos de 10 ka (Martínez-Rodríguez et al., 2024)."
+      ],
+      hip:"Las emisiones de CO₂ volcánico fueron el principal desencadenante de los hipertermales mesozoicos. Estos episodios están formados por una sucesión de eventos más cortos, algunos no ligados a pulsos volcánicos sino a emisiones de metano u otras fuentes de carbono ligero. El conjunto representa un proceso general de evolución del Sistema Tierra en condiciones de invernadero y altas temperaturas, en el que los factores de control pudieron estar modulados por cambios orbitales.",
+      nov:"Estudio a ultra alta resolución del pico negativo de δ13C seleccionado como base del Aptiense (GSSP), con especial atención a su bioestratigrafía y a los cambios bióticos y ambientales asociados, y tratamiento del OAE 1a como sucesión de eventos singulares caracterizados de forma independiente e integrados en un modelo temporal.",
+      og:[
+        ["OG1","Modelo temporal y tasas de cambio","GAG",[["OE1","Aumentar la resolución de las escalas bioestratigráficas del Aptiense inferior basadas en microorganismos planctónicos."],["OE2","Situar con precisión los episodios respecto a la escala cronoestratigráfica estándar."],["OE3","Determinar la duración del OAE 1a, en particular su inicio, y de sus subdivisiones mediante modelos temporales."]]],
+        ["OG2","Paleoambiente e impacto biótico","JMC",[["OE4","Determinar las condiciones paleoclimáticas y paleoambientales de cada episodio: temperatura, oxigenación, aportes terrígenos y productividad."],["OE5","Establecer las variaciones de las comunidades bióticas durante cada episodio."]]],
+        ["OG3","Factores de control","JMC",[["OE6","Determinar la impronta del vulcanismo global (geoquímica) y local (mineralogía), la meteorización y las emisiones de metano (isótopos de C, biomarcadores)."]]],
+        ["OG4","Patrón común del Sistema Tierra","JMC, GAG",[["OE7","Comparar duraciones y extensión geográfica de los episodios."],["OE8","Proponer un modelo general de evolución del ciclo del carbono que incorpore vulcanismo, metano, condiciones ambientales y consecuencias bióticas."]]]
+      ],
+      synth:"Objetivo de síntesis: comparar la dinámica climática y ambiental de los episodios, en especial el inicio del OAE 1a, con la dinámica actual, para extraer aportaciones al conocimiento del sistema climático y su respuesta a un aumento de CO₂.",
+      met:[
+        ["MOE0","Muestreo de detalle del inicio del OAE 1a en el testigo de Cau, campañas en Carbonero, Seguilí y El Pui, y revisión bibliográfica continua."],
+        ["MOE1-2","Nanofósiles (microscopio de luz polarizada Leica DM4P, 1250×) y foraminíferos planctónicos (lupa Olympus SZX16) a máxima resolución en el intervalo del GSSP. Isótopos de C y O sobre roca total y conchas de foraminíferos (IRMS MAT253 + Kiel IV, IGEO CSIC-UCM)."],
+        ["MOE3","Revisión e integración de los modelos astrocronológicos de Cau con calcimetrías, susceptibilidad magnética (Bartington MS2E) e isótopos de C."],
+        ["MOE4","Biomarcadores: extracción Soxhlet o ASE Dionex-350, cromatografía en columna, GC y GC-MS (Xcalibur). Elementos mayores y traza por ICP-MS (CIC-UGR) y µFRX Bruker M4 Tornado (CIC-UJA). TOC con Shimadzu TOC-V (UCM). Mineralogía por DRX (Panalytical X’Pert Pro, XPOWDER). Paleotemperaturas por δ18O de foraminíferos y biomarcadores."],
+        ["MOE5","Análisis cuantitativo de nanofósiles con PCA e índices de paleotemperatura, nutrientes y fertilidad; ecoestratigrafía de foraminíferos y radiolarios; índices de biomarcadores (productividad, oxigenación, aporte terrestre/marino, origen)."],
+        ["MOE6","Hg (Lumex RA-915 + PYRO-915, Vrije Universiteit Brussel), isótopos de Os y Li (TRITON, Arthur Holmes Lab, Durham), δ13C de concreciones y de compuestos específicos (OGU, Bristol) y mineralogía de niveles volcanoclásticos de Carbonero."],
+        ["MOE7-8","Integración, correlación con secciones publicadas, modelo genético de la sucesión de EECs y discusión de su relevancia para el cambio climático actual."]
+      ],
+      matNote:"Posiciones y fotografías de campo pendientes de confirmar por el equipo.",
+      plan:["Código","Tarea","Responsables · colaboran"],
+      teamCols:["Código","Nombre","Institución","Especialidad","ORCID"],
+      labsUJA:"Universidad de Jaén (CEACTEMA, Dpto. de Geología, CIC)",
+      labsUJAlist:["Molinos, hornos mufla y preparación de láminas delgadas","Microscopios petrográficos Leica DM2500 y Olympus BHSP; estereomicroscopios Leica M205 C y Olympus SZX16","Calcímetro automático Dream Électronique; susceptibilímetro Bartington MS2E","Soxhlet, rotavapor Büchi R-210, cromatógrafos de gases Shimadzu, GC-MS Thermo DSQ II y HPLC-MS Thermo TSQ Quantum","Analizador elemental CHNS-O, ICP-MS Agilent 7500 y FRX Bruker S4 Pioneer"],
+      labsExt:"Laboratorios externos",
+      labsExtList:["TOC: Shimadzu TOC-V, Universidad Complutense de Madrid","δ13C y δ18O: IRMS Thermo MAT253 + Kiel IV, IGEO (CSIC-UCM)","δ13Corg: Carlo Erba 1108 + IRMS, SIDI-UAM","Elementos traza: NexION 2000 B con ablación láser, CIC-Universidad de Granada","Isótopos de Os y Li: TRITON, Arthur Holmes Laboratory, Durham University","Hg: Lumex RA-915 + PYRO-915, Vrije Universiteit Brussel"],
+      prod:[["6–7","artículos en revistas JCR"],["10–12","comunicaciones a congresos"],["100 %","publicaciones en acceso abierto"]],
+      prodTopics:["Bioestratigrafía y cronoestratigrafía de los EECs del Barremiense superior","Cambios ambientales y bióticos durante el Barremiense superior","Astrocronología del Aptiense de la sección de Carbonero","Inicio del OAE 1a a alta resolución: indicadores bióticos y ambientales","Impronta del vulcanismo y las emisiones de metano durante el OAE 1a","Evolución ambiental del OAE 1a con indicadores geoquímicos y paleontológicos","Modelos de evolución climática y ambiental del Aptiense inferior","Cambios del Barremiense superior–Aptiense inferior y su relación con el ciclo del carbono y el vulcanismo"],
+      venues:"Congresos previstos: Goldschmidt, EGU General Assembly, IAS Meeting, International Cretaceous Symposium y reuniones de la Sociedad Geológica de España.",
+      datos:["Principios FAIR y ciencia abierta (art. 37 de la Ley de la Ciencia).","Conjuntos de datos con DOI en el repositorio RUJA (Universidad de Jaén).","Muestras georreferenciadas en SESAR2.","Datos geoquímicos en EarthChem.","Datos asociados a artículos en PANGAEA.","Preprints de artículos aceptados en RUJA."],
+      pubsEmpty:"Las publicaciones derivadas del proyecto se listarán aquí con su DOI.",
+      prevIntro:"Trayectoria del grupo en la temática:"
+    },
+    en:{
+      tag:"Technical version", back:"General-audience version", light:"Light", dark:"Dark", toLight:"Switch to light mode", toDark:"Switch to dark mode",
+      toc:"Contents",
+      s:{ficha:"Project details",ant:"Background",hip:"Hypothesis and novelty",obj:"Objectives",met:"Methods",mat:"Study material",plan:"Work plan",equipo:"Team",labs:"Laboratories and equipment",prev:"Previous results",prod:"Expected output",datos:"Data management",pubs:"Project publications",refs:"Key references"},
+      f:[["Reference","PID2023-151264NB-I00"],["Acronym","SECABA"],["Call","Knowledge Generation Projects 2023 · Non-oriented research, type B"],["Funding","Spanish Ministry of Science, Innovation and Universities · State Research Agency"],["Host","University of Jaén · Centre for Advanced Studies in Earth Sciences, Energy and Environment (CEACTEMA)"],["Duration","3 years · <span class=\"todo\">dates pending</span>"],["Areas","Earth and water sciences · Climate and atmosphere"],["Keywords","Stratigraphy, geochemistry, biomarkers, elements, isotopes, sedimentology, palaeontology, palaeoecology, palaeoclimatology, cyclostratigraphy"]],
+      ant:[
+        "Earth’s climate has alternated between greenhouse and icehouse states. Climate projections carry intrinsic uncertainty (Lewandowsky et al., 2015; IPCC, 2022), and the geological record holds analogue episodes that help constrain the Earth-system response to rising greenhouse gases (Ridgwell and Valdes, 2009).",
+        "The most widely accepted causes of oceanic anoxic events (OAEs) are high global temperatures linked to volcanogenic or methanogenic gases, which accelerated the hydrological cycle, weathering and primary productivity (Jenkyns, 2010; Erba et al., 2015). Not every carbon-cycle perturbation led to widespread anoxia, so Föllmi (2012) introduced episodes of environmental change (EECs): Weissert, Faraoni, Taxy, Fallot, Paquier and probably the Mid-Barremian Episode and the Intra-Furcata excursion.",
+        "<b>Taxy Episode (ISNE).</b> Late Barremian (~124.3–121.4 Ma; Gale et al., 2020; Martinez et al., 2020). A ~1‰ positive δ13C excursion associated with black-shale levels around the Barremian/Aptian boundary, identified at Cassis-La Bédoule, Angles, the Umbria-Marche Apennines and, in the Betic Cordillera, at Barranco de Cavila. It has been linked to the onset of Ontong Java volcanism (Charbonnier et al., 2018) or to the long-eccentricity cycle (~2.5 Myr; Martinez et al., 2022, 2023). Davidson et al. (2023) question the Ontong Java–OAE 1a link.",
+        "<b>IFeNE (Intra-Feraudianus Negative Excursion).</b> Defined by the team (Aguado et al., 2022a, c) at Barranco de Cavila, with evidence at Río Argos-6 and possibly L’Alcoraia; at least regional in extent. Whether it is an early phase of Taxy or a separate EEC remains open.",
+        "<b>Selli Episode (OAE 1a).</b> Early Aptian (~120 Ma). A negative then positive isotope excursion divided into segments (Menegatti et al., 1998), 4–8 °C warming, the nannoconid crisis and widespread anoxia. The team produced the first quantitative pCO₂ estimate (≈1000 → 2200 ppm over ~300 kyr; Naafs et al., 2016), proposed a dual methanogenic and volcanic source (Adloff et al., 2020) and showed with Os isotopes that the main Ontong Java volcanic phase post-dates the onset (Martínez-Rodríguez et al., 2021). Astrochronology of the Cau core gives 230 kyr for the onset (segment Ap3), with an initial phase shorter than 10 kyr (Martínez-Rodríguez et al., 2024)."
+      ],
+      hip:"Volcanic CO₂ emissions were the main trigger of Mesozoic hyperthermals. These episodes consist of a succession of shorter events, some not tied to volcanic pulses but to methane or other light-carbon sources. Together they represent a general Earth-system process under greenhouse, high-temperature conditions, with controlling factors possibly paced by orbital changes.",
+      nov:"Ultra-high-resolution study of the negative δ13C peak selected as the base of the Aptian (GSSP), focusing on its biostratigraphy and associated biotic and environmental change, and treatment of OAE 1a as a succession of distinct events characterised independently and integrated into an age model.",
+      og:[
+        ["OG1","Age model and rates of change","GAG",[["OE1","Increase the resolution of Early Aptian biostratigraphic scales based on planktonic microorganisms."],["OE2","Place the episodes precisely within the standard chronostratigraphic scale."],["OE3","Determine the duration of OAE 1a, especially its onset, and of its subdivisions using age models."]]],
+        ["OG2","Palaeoenvironment and biotic impact","JMC",[["OE4","Determine the palaeoclimatic and palaeoenvironmental conditions of each episode: temperature, oxygenation, terrigenous input and productivity."],["OE5","Establish changes in biotic communities during each episode."]]],
+        ["OG3","Controlling factors","JMC",[["OE6","Determine the imprint of global (geochemistry) and local (mineralogy) volcanism, weathering and methane release (C isotopes, biomarkers)."]]],
+        ["OG4","Common Earth-system pattern","JMC, GAG",[["OE7","Compare the durations and geographical extent of the episodes."],["OE8","Propose a general carbon-cycle model including volcanism, methane, environmental conditions and biotic consequences."]]]
+      ],
+      synth:"Synthesis objective: compare the climatic and environmental dynamics of the episodes, especially the OAE 1a onset, with present-day dynamics, to inform our understanding of the climate system and its response to rising CO₂.",
+      met:[
+        ["MOE0","Detailed sampling of the OAE 1a onset in the Cau core, field campaigns at Carbonero, Seguilí and El Pui, and continuous literature review."],
+        ["MOE1-2","Nannofossils (Leica DM4P polarised-light microscope, 1250×) and planktonic foraminifera (Olympus SZX16) at maximum resolution across the GSSP interval. C and O isotopes on bulk rock and foraminiferal tests (MAT253 IRMS + Kiel IV, IGEO CSIC-UCM)."],
+        ["MOE3","Review and integration of the Cau astrochronological models with calcimetry, magnetic susceptibility (Bartington MS2E) and C isotopes."],
+        ["MOE4","Biomarkers: Soxhlet or ASE Dionex-350 extraction, column chromatography, GC and GC-MS (Xcalibur). Major and trace elements by ICP-MS (CIC-UGR) and Bruker M4 Tornado µXRF (CIC-UJA). TOC with Shimadzu TOC-V (UCM). XRD mineralogy (Panalytical X’Pert Pro, XPOWDER). Palaeotemperatures from foraminiferal δ18O and biomarkers."],
+        ["MOE5","Quantitative nannofossil analysis with PCA and palaeotemperature, nutrient and fertility indices; foraminiferal and radiolarian ecostratigraphy; biomarker indices (productivity, oxygenation, terrestrial/marine input, source)."],
+        ["MOE6","Hg (Lumex RA-915 + PYRO-915, Vrije Universiteit Brussel), Os and Li isotopes (TRITON, Arthur Holmes Lab, Durham), δ13C of concretions and specific compounds (OGU, Bristol) and mineralogy of Carbonero volcaniclastic layers."],
+        ["MOE7-8","Integration, correlation with published sections, a genetic model of the EEC succession and discussion of its relevance to present climate change."]
+      ],
+      matNote:"Site positions and field photographs pending confirmation by the team.",
+      plan:["Code","Task","Lead · contributors"],
+      teamCols:["Code","Name","Institution","Expertise","ORCID"],
+      labsUJA:"University of Jaén (CEACTEMA, Department of Geology, CIC)",
+      labsUJAlist:["Mills, muffle furnaces and thin-section preparation","Leica DM2500 and Olympus BHSP petrographic microscopes; Leica M205 C and Olympus SZX16 stereomicroscopes","Dream Électronique automatic calcimeter; Bartington MS2E susceptibility meter","Soxhlet, Büchi R-210 rotary evaporator, Shimadzu gas chromatographs, Thermo DSQ II GC-MS and Thermo TSQ Quantum HPLC-MS","CHNS-O elemental analyser, Agilent 7500 ICP-MS and Bruker S4 Pioneer XRF"],
+      labsExt:"External laboratories",
+      labsExtList:["TOC: Shimadzu TOC-V, Complutense University of Madrid","δ13C and δ18O: Thermo MAT253 IRMS + Kiel IV, IGEO (CSIC-UCM)","δ13Corg: Carlo Erba 1108 + IRMS, SIDI-UAM","Trace elements: NexION 2000 B with laser ablation, CIC-University of Granada","Os and Li isotopes: TRITON, Arthur Holmes Laboratory, Durham University","Hg: Lumex RA-915 + PYRO-915, Vrije Universiteit Brussel"],
+      prod:[["6–7","papers in JCR journals"],["10–12","conference contributions"],["100%","open-access publications"]],
+      prodTopics:["Bio- and chronostratigraphy of Late Barremian EECs","Environmental and biotic change during the Late Barremian","Aptian astrochronology of the Carbonero section","High-resolution OAE 1a onset: biotic and environmental proxies","Imprint of volcanism and methane release during OAE 1a","OAE 1a environmental evolution from geochemical and palaeontological proxies","Early Aptian climatic and environmental models and controlling factors","Late Barremian–Early Aptian change and its relation to the carbon cycle and volcanism"],
+      venues:"Planned meetings: Goldschmidt, EGU General Assembly, IAS Meeting, International Cretaceous Symposium and meetings of the Geological Society of Spain.",
+      datos:["FAIR principles and open science (art. 37, Spanish Science Act).","Datasets with DOIs in the RUJA repository (University of Jaén).","Samples georeferenced in SESAR2.","Geochemical data in EarthChem.","Paper datasets in PANGAEA.","Preprints of accepted papers in RUJA."],
+      pubsEmpty:"Publications resulting from the project will be listed here with their DOIs.",
+      prevIntro:"The group’s track record on the topic:"
+    }
+  };
+
+  function render(){
+    var L=S.T[lang], X=TX[lang], s=X.s; S.setLang(lang);
+    document.title='SECABA · '+(lang==='es'?'Técnica':'Technical');
+    var ids=['ficha','ant','hip','obj','met','mat','plan','equipo','labs','prev','prod','datos','pubs','refs'];
+    var h='<div class="band"><div class="wrap"><div class="top"><span class="brand">SECABA</span><span class="tag">'+e(X.tag)+'</span><div class="tools"><a class="btn" href="./">←'+e(X.back)+'</a><button class="btn" id="theme" type="button"></button><button class="btn" id="lang" type="button" aria-label="'+e(L.otherLabel)+'">'+L.other+'</button></div></div>';
+    h+='<div class="head"><span class="eyebrow">'+e(L.ref)+'</span><h1>'+e(L.title)+': '+e(L.subtitle.charAt(0).toLowerCase()+L.subtitle.slice(1))+'</h1><p class="en">'+(lang==='es'?e(S.T.en.title)+': '+e(S.T.en.subtitle.toLowerCase()):e(S.T.es.title)+': '+e(S.T.es.subtitle.toLowerCase()))+'</p></div></div></div>';
+    h+='<div class="wrap layout"><nav class="toc" aria-label="'+e(X.toc)+'"><span class="lbl">'+e(X.toc)+'</span>'+ids.map(function(k,i){return '<a href="#'+k+'">'+(i+1)+'. '+e(s[k])+'</a>';}).join('')+'</nav><main>';
+    function sec(k,i,inner){return '<section id="'+k+'"><h2><span class="n">'+(i+1)+'</span>'+e(s[k])+'</h2>'+inner+'</section>';}
+    var n=0;
+    h+=sec('ficha',n++,'<dl class="facts">'+X.f.map(function(r){return '<dt>'+e(r[0])+'</dt><dd>'+r[1]+'</dd>';}).join('')+'</dl>');
+    h+=sec('ant',n++,'<div class="prose">'+X.ant.map(function(p){return '<p>'+p+'</p>';}).join('')+'</div><div class="figs"><div class="small">'+S.figure('oae',lang)+'</div>'+S.figure('eec',lang)+'</div>');
+    h+=sec('hip',n++,'<div class="card hl"><h3>'+e(L.hypT)+'</h3><p>'+e(X.hip)+'</p></div><div class="card"><h3>'+e(L.novT)+'</h3><p>'+e(X.nov)+'</p></div>');
+    h+=sec('obj',n++,'<div class="goals">'+X.og.map(function(g){return '<div class="og"><span class="c">'+g[0]+' · '+e(g[2])+'</span><h3>'+e(g[1])+'</h3><ul>'+g[3].map(function(o){return '<li><b>'+o[0]+'</b>'+e(o[1])+'</li>';}).join('')+'</ul></div>';}).join('')+'<div class="card hl"><p>'+e(X.synth)+'</p></div></div>');
+    h+=sec('met',n++,'<div class="tbl"><table><tbody>'+X.met.map(function(m){return '<tr><td class="k">'+m[0]+'</td><td>'+e(m[1])+'</td></tr>';}).join('')+'</tbody></table></div>');
+    h+=sec('mat',n++,'<div class="tbl"><table><thead><tr><th>'+(lang==='es'?'Sección':'Section')+'</th><th>'+(lang==='es'?'Tipo y situación':'Type and setting')+'</th><th>'+(lang==='es'?'Episodios':'Episodes')+'</th><th>'+(lang==='es'?'Interés':'Relevance')+'</th></tr></thead><tbody>'+S.sites.map(function(x){return '<tr><td><b>'+e(x.n)+'</b></td><td>'+e(x.kind[lang])+'</td><td class="mono">'+e(x.tag.join(', ')||'—')+'</td><td>'+e(x.d[lang])+'</td></tr>';}).join('')+'</tbody></table></div><p class="mono" style="color:var(--muted)">'+e(X.matNote)+'</p>'+S.figure('cau',lang));
+    var g='<div class="tbl gantt"><table><thead><tr><th>'+X.plan[0]+'</th><th>'+X.plan[1]+'</th><th>'+X.plan[2]+'</th>';
+    for(var q=1;q<=12;q++) g+='<th class="q">'+L.planUnit+q+'</th>';
+    g+='</tr></thead><tbody>'+tasks.map(function(t){var r='<tr><td class="k">'+t[0]+'</td><td>'+e(lang==='es'?t[1]:t[2])+'</td><td class="mono" style="font-size:.74rem">'+e(t[3])+'</td>'; for(var q=1;q<=12;q++){r+='<td class="q">'+(q>=t[4]&&q<=t[5]?'<span class="'+(q===t[4]?'s ':'')+(q===t[5]?'e':'')+'"></span>':'')+'</td>';} return r+'</tr>';}).join('')+'</tbody></table></div>';
+    g+='<div class="ms">'+S.milestones.map(function(m){return '<span><b>'+m.h+' · '+L.planUnit+m.t+'</b>'+e(m[lang])+'</span>';}).join('')+'</div>';
+    h+=sec('plan',n++,g);
+    var t='';
+    ['research','work','collab'].forEach(function(k){t+='<h3 style="margin-top:8px">'+e(L.teamGroups[k])+'</h3><div class="tbl"><table><thead><tr>'+X.teamCols.map(function(c){return '<th>'+c+'</th>';}).join('')+'</tr></thead><tbody>'+S.people[k].map(function(p){return '<tr><td class="k">'+(codes[p.n]||'')+'</td><td><b>'+e(p.n)+'</b></td><td>'+e(p.i)+'</td><td>'+e(p.f[lang])+'</td><td class="mono">'+(p.o?'<a href="https://orcid.org/'+p.o+'">'+p.o+'</a>':'—')+'</td></tr>';}).join('')+'</tbody></table></div>';});
+    h+=sec('equipo',n++,t);
+    h+=sec('labs',n++,'<div class="card"><h3>'+e(X.labsUJA)+'</h3><ul style="margin:0;padding-left:1.1em;display:grid;gap:4px;font-size:.9rem">'+X.labsUJAlist.map(function(x){return '<li>'+e(x)+'</li>';}).join('')+'</ul></div><div class="card"><h3>'+e(X.labsExt)+'</h3><ul style="margin:0;padding-left:1.1em;display:grid;gap:4px;font-size:.9rem">'+X.labsExtList.map(function(x){return '<li>'+e(x)+'</li>';}).join('')+'</ul></div>');
+    h+=sec('prev',n++,'<p>'+e(X.prevIntro)+'</p><div class="tbl"><table><tbody>'+S.record.map(function(r){return '<tr><td class="k">'+r.y+'</td><td>'+e(r[lang])+'</td></tr>';}).join('')+'</tbody></table></div>');
+    h+=sec('prod',n++,'<div class="tbl"><table><tbody>'+X.prod.map(function(p){return '<tr><td class="k" style="font-size:1rem">'+p[0]+'</td><td>'+e(p[1])+'</td></tr>';}).join('')+'</tbody></table></div><ol style="margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:.92rem">'+X.prodTopics.map(function(x){return '<li>'+e(x)+'</li>';}).join('')+'</ol><p style="color:var(--muted);font-size:.9rem">'+e(X.venues)+'</p>');
+    h+=sec('datos',n++,'<ul style="margin:0;padding-left:1.1em;display:grid;gap:4px">'+X.datos.map(function(x){return '<li>'+e(x)+'</li>';}).join('')+'</ul><p><a href="'+S.ruja+'">'+e(L.dataLink)+' →</a></p>');
+    h+=sec('pubs',n++,'<p class="empty">'+e(X.pubsEmpty)+'</p>');
+    h+=sec('refs',n++,'<ol class="refs">'+refs.map(function(r){return '<li>'+e(r[0])+(r[1]?' <a href="https://doi.org/'+r[1]+'">doi:'+r[1]+'</a>':'')+'</li>';}).join('')+'</ol>');
+    h+='</main></div><footer><div class="wrap">'+S.logos()+'<span>'+e(L.fundingLine)+'</span><span>'+e(L.funder)+'</span></div></footer>';
+    document.getElementById('app').innerHTML=h;
+    document.getElementById('lang').onclick=function(){lang=lang==='es'?'en':'es'; render();};
+    var tb=document.getElementById('theme');
+    function paint(){var d=isDark(); tb.innerHTML=(d?SUN:MOON)+'<span>'+(d?X.light:X.dark)+'</span>'; tb.setAttribute('aria-label',d?X.toLight:X.toDark);}
+    tb.onclick=function(){var nx=isDark()?'light':'dark'; document.documentElement.setAttribute('data-theme',nx); try{localStorage.setItem('secaba-theme',nx);}catch(_){} paint();};
+    paint();
+    spy();
+  }
+  // Resalta en el índice la sección visible
+  function spy(){
+    var links=[].slice.call(document.querySelectorAll('.toc a'));
+    if(!('IntersectionObserver' in window)) return;
+    var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+x.target.id);});}});},{rootMargin:'0px 0px -70% 0px'});
+    document.querySelectorAll('main section').forEach(function(sct){io.observe(sct);});
+  }
+  render();
+})();
+</script>
+</body>
+</html>
