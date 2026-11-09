@@ -10,4 +10,4 @@ Formato: [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) · versione
 - Figuras de la memoria y logos de financiación.
 - Cocolito 3D en la portada (gira, sigue al puntero y se desintegra al bajar).
 - Sección «El testigo de Cau, en 3D»: recorrido por el testigo con scroll, hitos del OAE 1a y curva de δ13C (esquema hasta tener los datos reales).
-- Pie de página con «Desarrollado por PXS» y contacto con correo ofuscado (solo se muestra al pulsar).
+- Pie de página con bloque destacado «¿Te gusta esta web? Diseñada y desarrollada por PXS» y botón «Quiero una web así», que muestra el correo (ofuscado en el código) con el asunto ya relleno.

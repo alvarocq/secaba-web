@@ -281,21 +281,33 @@
   var _k = [116, 118, 106, 53, 119, 119, 104, 52, 122, 127, 119, 71, 118, 121, 123, 122, 104, 106, 118, 121, 104, 125, 115, 104];
   function credit(lang) {
     var es = lang !== "en";
-    return '<p class="credit" style="margin:0;font-size:.8rem;opacity:.85;display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center">' +
-      "<span>" + (es ? "Desarrollado por" : "Developed by") + " <b>PXS</b></span><span aria-hidden=\"true\">·</span>" +
-      '<span id="pxs-contact">' + (es ? "Contacto:" : "Contact:") + ' <button type="button" id="pxs-reveal" style="font:inherit;color:inherit;background:none;border:0;padding:0;text-decoration:underline;cursor:pointer">' +
-      (es ? "mostrar correo" : "show email") + "</button></span></p>";
+    var mono = 'font-family:IBM Plex Mono,ui-monospace,Menlo,monospace';
+    return '<div class="pxs" style="margin-top:14px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px 32px;padding:clamp(20px,3vw,32px);border:1px solid color-mix(in srgb,currentColor 28%,transparent);border-radius:20px">' +
+      '<div style="display:grid;gap:6px;min-width:0;max-width:60ch">' +
+        '<span style="' + mono + ';font-size:.74rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;opacity:.75">' + (es ? "¿Te gusta esta web?" : "Like this website?") + "</span>" +
+        '<span style="font-size:clamp(1.35rem,2.8vw,2rem);font-weight:700;line-height:1.15;opacity:1">' + (es ? "Diseñada y desarrollada por <b>PXS</b>" : "Designed and built by <b>PXS</b>") + "</span>" +
+        '<span style="font-size:.98rem;line-height:1.5;opacity:.82">' + (es ? "Hacemos webs a medida para proyectos de investigación, grupos y empresas. Pide la tuya." : "We build custom websites for research projects, groups and companies. Ask for yours.") + "</span>" +
+      "</div>" +
+      '<div id="pxs-contact" style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;font-size:1.05rem">' +
+        '<button type="button" id="pxs-reveal" style="font-family:inherit;font-size:1rem;font-weight:600;line-height:1;padding:15px 24px;border-radius:999px;border:2px solid currentColor;background:transparent;color:inherit;cursor:pointer;white-space:nowrap">' +
+        (es ? "Quiero una web así →" : "I want a website like this →") + "</button>" +
+      "</div></div>";
   }
   function bindCredit(lang) {
     var b = document.getElementById("pxs-reveal");
     if (!b) return;
     b.addEventListener("click", function () {
+      var es = lang !== "en";
       var m = _k.slice().reverse().map(function (n) { return String.fromCharCode(n - 7); }).join("");
-      var a = document.createElement("a");
-      a.href = "mai" + "lto:" + m; a.textContent = m; a.style.color = "inherit";
       var box = document.getElementById("pxs-contact");
-      box.textContent = (lang === "en" ? "Contact: " : "Contacto: ");
-      box.appendChild(a);
+      box.textContent = "";
+      var lab = document.createElement("span"); lab.textContent = es ? "Escríbenos a" : "Write to us at"; lab.style.opacity = ".8";
+      var a = document.createElement("a");
+      a.href = "mai" + "lto:" + m + "?subject=" + encodeURIComponent(es ? "Quiero una web como la de SECABA" : "I want a website like SECABA's");
+      a.textContent = m;
+      a.style.cssText = "color:inherit;font-weight:700;font-size:clamp(1.05rem,2vw,1.3rem);text-underline-offset:4px;overflow-wrap:anywhere";
+      box.appendChild(lab); box.appendChild(a);
+      a.focus();
     });
   }
 
