@@ -96,6 +96,14 @@ td.k{font-family:var(--f-mono); font-size:.8rem; white-space:nowrap; color:var(-
 footer{background:var(--deep); color:var(--on-ocean); font-size:.82rem}
 footer .wrap{padding-block:24px; display:grid; gap:12px}
 footer span{opacity:.8}
+/* Franja de PXS: color propio (degradado de la web) para que destaque */
+.pxsband{background:linear-gradient(118deg,#1d4f8f 0%,#3b5ea8 22%,#c2410c 62%,#9b1c1c 100%); color:#fff}
+.pxsband .wrap{padding-block:clamp(28px,4vw,48px)}
+.pxsband .pxs{margin-top:0!important; border-color:rgba(255,255,255,.45)!important; background:rgba(0,0,0,.12)}
+.pxsband #pxs-reveal{background:#fff!important; color:#9b1c1c!important; border-color:#fff!important; box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.pxsband #pxs-reveal:hover{transform:translateY(-1px)}
+.pxsband #pxs-contact a{color:#fff!important}
+
 </style>
 </head>
 <body>
@@ -276,7 +284,7 @@ footer span{opacity:.8}
     h+=sec('datos',n++,'<ul style="margin:0;padding-left:1.1em;display:grid;gap:4px">'+X.datos.map(function(x){return '<li>'+e(x)+'</li>';}).join('')+'</ul><p><a href="'+S.ruja+'">'+e(L.dataLink)+' →</a></p>');
     h+=sec('pubs',n++,'<p class="empty">'+e(X.pubsEmpty)+'</p>');
     h+=sec('refs',n++,'<ol class="refs">'+refs.map(function(r){return '<li>'+e(r[0])+(r[1]?' <a href="https://doi.org/'+r[1]+'">doi:'+r[1]+'</a>':'')+'</li>';}).join('')+'</ol>');
-    h+='</main></div><footer><div class="wrap">'+S.logos()+'<span>'+e(L.fundingLine)+'</span><span>'+e(L.funder)+'</span>'+S.credit(lang)+'</div></footer>';
+    h+='</main></div><footer><div class="wrap">'+S.logos()+'<span>'+e(L.fundingLine)+'</span><span>'+e(L.funder)+'</span></div></footer><div class="pxsband"><div class="wrap">'+S.credit(lang)+'</div></div>';
     document.getElementById('app').innerHTML=h;
     S.bindCredit(lang);
     document.getElementById('lang').onclick=function(){lang=lang==='es'?'en':'es'; render();};
