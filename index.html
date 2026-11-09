@@ -243,7 +243,7 @@ section{padding-block:clamp(64px,9vw,120px)}
 <body>
 <div class="heat" aria-hidden="true"><i id="heat"></i></div>
 <div id="app"></div>
-<script src="content.js?v=20261109c"></script>
+<script src="content.js?v=20261109d"></script>
 <script>
 (function(){
   var S=SECABA, e=S.esc, lang=S.getLang();
@@ -274,7 +274,7 @@ section{padding-block:clamp(64px,9vw,120px)}
   function fmt(n){return n.toLocaleString(lang==='es'?'es-ES':'en-GB');}
   function render(){
     var L=S.T[lang], x=X[lang], n=L.nav; S.setLang(lang); var h='';
-    var nav=[['episodios',n.episodes],['testigo',lang==='es'?'Testigo 3D':'3D core'],['objetivos',n.goals],['lugares',n.sites],['cronograma',n.plan],['equipo',n.team],['contacto',n.contact]];
+    var nav=[['modelo',lang==='es'?'Modelo 3D':'3D model'],['episodios',n.episodes],['testigo',lang==='es'?'Testigo 3D':'3D core'],['objetivos',n.goals],['lugares',n.sites],['cronograma',n.plan],['equipo',n.team],['contacto',n.contact]];
     h+='<div class="topbar"><div class="wrap"><header class="bar"><span class="logo">SECABA</span><nav aria-label="Secciones">'+nav.map(function(a){return '<a href="#'+a[0]+'">'+e(a[1])+'</a>';}).join('')+'</nav><div class="tools"><a class="lang" href="tecnica.html" style="text-decoration:none">'+(lang==='es'?'Especialistas':'Specialists')+'</a><button class="lang ico-btn" id="theme" type="button"></button><button class="lang" id="lang" type="button" aria-label="'+e(L.otherLabel)+'">'+L.other+'</button></div></header></div></div>';
     var tech=lang==='es'?{b:'Web para especialistas',d:'Antecedentes, objetivos específicos, metodología, laboratorios, plan de trabajo y bibliografía.'}:{b:'Website for specialists',d:'Background, specific aims, methods, laboratories, work plan and references.'};
     h+='<main><div class="hero wrap"><div id="coco3d" class="coco3d" aria-hidden="true"></div><p class="mono">'+e(x.h1[0])+' '+e(x.h1[1])+'</p><p class="kind">'+(lang==='es'?'Proyecto de investigación · Universidad de Jaén':'Research project · University of Jaén')+'</p><h1><span>SECABA</span></h1><p class="ptitle">'+e(L.title)+'</p><p class="psub">'+e(L.subtitle)+'</p><div class="row"><p class="lead">'+e(L.lead)+'</p><div><a class="cta" href="tecnica.html"><b>'+e(tech.b)+' →</b><span>'+e(tech.d)+'</span></a><div class="ref mono"><span>'+e(L.ref)+'</span><span>'+e(L.host)+'</span><span>'+e(L.duration)+'</span><span class="todo">'+e(L.datesTodo)+'</span></div></div></div></div>';
@@ -292,7 +292,7 @@ section{padding-block:clamp(64px,9vw,120px)}
     var max=2400;
     h+='<section id="proyecto"><div class="wrap split"><div class="prose"><span class="mono kick">'+e(L.whyT)+'</span>'+L.why.map(function(p){return '<p>'+e(p)+'</p>';}).join('')+'<p><b>'+e(L.novT)+'.</b> '+e(L.nov)+'</p></div>'+
       '<figure class="chart" id="chart" style="margin:0"><h3>'+e(x.chartT)+'</h3><p class="sub">'+e(x.chartS)+'</p><div class="bars">'+co2.map(function(v,i){return '<div class="br'+(i<2?' now':'')+'" data-tip="'+e(x.rows[i])+': '+fmt(v)+' ppm" style="--w:0%" data-w="'+(v/max*100).toFixed(1)+'%"><span class="lb">'+e(x.rows[i])+'</span><div class="tr"><span class="f"></span><span class="v">'+fmt(v)+'</span></div></div>';}).join('')+'</div>'+
-      '<div class="axis"><span></span><div><span>0</span><span>600</span><span>1200</span><span>1800</span><span>2400</span></div></div><p class="src">'+e(x.src)+'</p><div class="tip" id="tip"></div></figure></div><div class="wrap" style="margin-top:48px"><div style="max-width:560px;margin-inline:auto">'+S.figure('oae',lang)+'</div></div></section>';
+      '<div class="axis"><span></span><div><span>0</span><span>600</span><span>1200</span><span>1800</span><span>2400</span></div></div><p class="src">'+e(x.src)+'</p><div class="tip" id="tip"></div></figure></div></section><section id="modelo" class="oaesec" aria-labelledby="modelo-t"><div class="wrap"><div id="oae3d"></div></div></section>';
     var pins=[{k:'IFeNE',p:28},{k:'Taxy',p:46},{k:'OAE 1a',p:80}], cols=['var(--cold)','var(--warm)','var(--hot)'];
     h+='<section id="episodios" style="padding-top:0"><div class="wrap"><span class="mono kick">'+e(n.episodes)+'</span><h2 class="h2">'+e(L.episodesT)+'</h2><div class="scale" aria-label="'+e(x.scaleT)+'">'+pins.map(function(p){return '<span class="pin" style="left:'+p.p+'%"><b>'+p.k+'</b><i></i></span>';}).join('')+'<div class="line"></div><div class="tk"><span>125 '+e(x.ma)+'</span><span>'+e(x.scaleT)+'</span><span>118</span></div></div>'+
       '<div class="eps">'+L.episodes.map(function(ep,i){return '<div class="ep" style="--c:'+cols[i]+'"><span class="mono">'+e(ep.age)+'</span><h3>'+e(ep.k)+'</h3><p><b>'+e(ep.n)+'.</b> '+e(ep.d)+'</p></div>';}).join('')+'</div><div style="display:grid;gap:40px;margin-top:48px">'+S.figure('eec',lang)+S.figure('cau',lang)+'</div></div></section>';
@@ -356,7 +356,9 @@ section{padding-block:clamp(64px,9vw,120px)}
   render();
 })();
 </script>
-<script type="module" src="js/cocolito.js?v=20261109c"></script>
-<script type="module" src="js/testigo3d.js?v=20261109c"></script>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+<script type="module" src="js/cocolito.js?v=20261109d"></script>
+<script type="module" src="js/testigo3d.js?v=20261109d"></script>
+<script type="module" src="js/oae3d.js?v=20261109d"></script>
 </body>
 </html>

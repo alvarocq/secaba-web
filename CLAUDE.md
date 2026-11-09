@@ -21,6 +21,7 @@ Publicación: GitHub Pages desde `main` (raíz). El repo es público porque Page
 - Logos en alta resolución (los actuales salen de los Word y son pequeños).
 - Figuras 1 y 2 (Jenkyns 2010, Föllmi 2012) tienen derechos de editorial: pedir permiso o redibujar.
 - Fotos de lugares: son de ejemplo (web del proyecto PY20_00783) y van marcadas así; posiciones del mapa aproximadas.
+- Modelo 3D del evento anóxico (`js/oae3d.js`): recreación propia del esquema de Jenkyns (2010); la figura 1 original sigue solo en la web técnica. Textos de los pasos pendientes de revisión por el equipo. Usa import map (`three` y `three/addons/`) definido en `index.html`.
 - Testigo de Cau en 3D: capas, posiciones de los hitos y curva de δ13C son un ESQUEMA (`KEYS` y bucle de capas en `js/testigo3d.js`). Sustituir por los datos reales del sondeo (CSV de δ13C/Os y litología) cuando el equipo los pase.
 - El Carniense (CPE) que aparece en la memoria se ha dejado fuera a propósito.
 - No mostrar el correo del proyecto ni etiquetas de "IP" (decisión del cliente).
