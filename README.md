@@ -1,28 +1,37 @@
-# Nombre del proyecto
+# SECABA · web del proyecto
 
-Una frase: qué es y para quién.
+Web del proyecto de investigación **SECABA** (PID2023-151264NB-I00, Universidad de Jaén): *Sucesión de episodios de cambio ambiental acelerado en el Barremiense superior y Aptiense inferior*. Tiene dos públicos:
 
-## Empezar
+- **`index.html`**: versión divulgativa para el público general.
+- **`tecnica.html`**: versión técnica para especialistas e investigadores.
+
+Las dos están en español e inglés y tienen modo claro y oscuro.
+
+## Ver la web
+
+Publicada con GitHub Pages: <https://alvarocq.github.io/secaba-web/>
+
+Para verla en local basta con abrir `index.html` en el navegador o, mejor, servir la carpeta:
 
 ```
-npm install
-npm run dev
+python3 -m http.server 8000
 ```
 
-## Comandos
+y abrir <http://localhost:8000>.
 
-| Comando | Qué hace |
+## Estructura
+
+| Archivo | Qué contiene |
 |---|---|
-| `npm run dev` | Servidor de desarrollo |
-| `npm test` | Tests |
-| `npm run build` | Build de producción |
+| `index.html` | Web divulgativa (diseño «Invernadero») |
+| `tecnica.html` | Web técnica: antecedentes, objetivos, metodología, plan de trabajo, laboratorios y bibliografía |
+| `content.js` | Contenido compartido en ES/EN: textos, equipo, lugares, cronograma, figuras y logos |
+| `img/` | Figuras de la memoria, logos de financiación y fotos de ejemplo de los lugares |
 
-## Configuración
-
-Copia `.env.example` a `.env` y rellena los valores. `.env` nunca se sube.
+Para cambiar un texto común a las dos webs se edita `content.js`; los textos propios de la web técnica están dentro de `tecnica.html`.
 
 ## Cómo se trabaja
 
 - Una rama por cambio (`feat/…`, `fix/…`, `docs/…`, `chore/…`) y un Pull Request para entrar en `main`.
-- El CI pasa tests, typecheck y build en cada PR; `main` solo acepta PR en verde.
+- Al fusionar en `main`, GitHub Pages publica la web automáticamente.
 - Las versiones se marcan con tags semver y se anotan en `CHANGELOG.md`.
