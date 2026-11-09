@@ -44,7 +44,12 @@ header nav a{text-decoration:none; color:var(--muted)} header nav a:hover{color:
 .ico-btn{display:inline-flex; align-items:center; gap:6px}
 .ico-btn svg{width:14px; height:14px; display:block}
 
-.hero{padding-block:clamp(32px,6vw,80px) clamp(40px,6vw,72px)}
+.hero{padding-block:clamp(32px,6vw,80px) clamp(40px,6vw,72px); position:relative; overflow-x:clip}
+html,body{overflow-x:clip}
+.hero>*:not(.coco3d){position:relative; z-index:1}
+/* Cocolito 3D: detrás del titular, a la derecha; no captura el puntero */
+.coco3d{position:absolute; z-index:0; pointer-events:none; right:max(-6vw,-80px); top:clamp(-20px,-2vw,0px); width:min(58vw,760px); aspect-ratio:1}
+@media (max-width:860px){.coco3d{width:92vw; right:-28vw; top:20px; opacity:.6}}
 .hero .mono{color:var(--warm)}
 .hero h1{font-size:clamp(4rem,17vw,15rem); font-weight:800; font-stretch:78%; letter-spacing:-.04em; line-height:.82; margin-top:14px}
 .hero .ptitle{font:700 clamp(1.4rem,3vw,2.5rem)/1.12 var(--f-disp); font-stretch:88%; letter-spacing:-.01em; max-width:30ch; margin-top:18px; text-wrap:balance}
@@ -247,10 +252,10 @@ footer .wrap{padding-block:24px; display:grid; gap:6px; font-size:.8rem; opacity
   function fmt(n){return n.toLocaleString(lang==='es'?'es-ES':'en-GB');}
   function render(){
     var L=S.T[lang], x=X[lang], n=L.nav; S.setLang(lang); var h='';
-    var nav=[['episodios',n.episodes],['objetivos',n.goals],['lugares',n.sites],['cronograma',n.plan],['equipo',n.team],['contacto',n.contact]];
+    var nav=[['episodios',n.episodes],['testigo',lang==='es'?'Testigo 3D':'3D core'],['objetivos',n.goals],['lugares',n.sites],['cronograma',n.plan],['equipo',n.team],['contacto',n.contact]];
     h+='<div class="wrap"><header class="bar"><span class="logo">SECABA</span><nav aria-label="Secciones">'+nav.map(function(a){return '<a href="#'+a[0]+'">'+e(a[1])+'</a>';}).join('')+'</nav><div class="tools"><a class="lang" href="tecnica.html" style="text-decoration:none">'+(lang==='es'?'Especialistas':'Specialists')+'</a><button class="lang ico-btn" id="theme" type="button"></button><button class="lang" id="lang" type="button" aria-label="'+e(L.otherLabel)+'">'+L.other+'</button></div></header></div>';
     var tech=lang==='es'?{b:'Web para especialistas',d:'Antecedentes, objetivos específicos, metodología, laboratorios, plan de trabajo y bibliografía.'}:{b:'Website for specialists',d:'Background, specific aims, methods, laboratories, work plan and references.'};
-    h+='<main><div class="hero wrap"><p class="mono">'+e(x.h1[0])+' '+e(x.h1[1])+'</p><p class="kind">'+(lang==='es'?'Proyecto de investigación · Universidad de Jaén':'Research project · University of Jaén')+'</p><h1><span>SECABA</span></h1><p class="ptitle">'+e(L.title)+'</p><p class="psub">'+e(L.subtitle)+'</p><div class="row"><p class="lead">'+e(L.lead)+'</p><div><a class="cta" href="tecnica.html"><b>'+e(tech.b)+' →</b><span>'+e(tech.d)+'</span></a><div class="ref mono"><span>'+e(L.ref)+'</span><span>'+e(L.host)+'</span><span>'+e(L.duration)+'</span><span class="todo">'+e(L.datesTodo)+'</span></div></div></div></div>';
+    h+='<main><div class="hero wrap"><div id="coco3d" class="coco3d" aria-hidden="true"></div><p class="mono">'+e(x.h1[0])+' '+e(x.h1[1])+'</p><p class="kind">'+(lang==='es'?'Proyecto de investigación · Universidad de Jaén':'Research project · University of Jaén')+'</p><h1><span>SECABA</span></h1><p class="ptitle">'+e(L.title)+'</p><p class="psub">'+e(L.subtitle)+'</p><div class="row"><p class="lead">'+e(L.lead)+'</p><div><a class="cta" href="tecnica.html"><b>'+e(tech.b)+' →</b><span>'+e(tech.d)+'</span></a><div class="ref mono"><span>'+e(L.ref)+'</span><span>'+e(L.host)+'</span><span>'+e(L.duration)+'</span><span class="todo">'+e(L.datesTodo)+'</span></div></div></div></div>';
     h+='<div class="wrap"><div class="facts">'+L.facts.map(function(f){return '<div class="fact"><b>'+e(f.v)+'<small>'+e(f.u)+'</small></b><p>'+e(f.d)+'</p></div>';}).join('')+'</div></div>';
     // Hipótesis destacada: primera frase como titular y los tres factores de control
     var hs=L.hyp.split('. '), ic={
@@ -269,6 +274,7 @@ footer .wrap{padding-block:24px; display:grid; gap:6px; font-size:.8rem; opacity
     var pins=[{k:'IFeNE',p:28},{k:'Taxy',p:46},{k:'OAE 1a',p:80}], cols=['var(--cold)','var(--warm)','var(--hot)'];
     h+='<section id="episodios" style="padding-top:0"><div class="wrap"><span class="mono kick">'+e(n.episodes)+'</span><h2 class="h2">'+e(L.episodesT)+'</h2><div class="scale" aria-label="'+e(x.scaleT)+'">'+pins.map(function(p){return '<span class="pin" style="left:'+p.p+'%"><b>'+p.k+'</b><i></i></span>';}).join('')+'<div class="line"></div><div class="tk"><span>125 '+e(x.ma)+'</span><span>'+e(x.scaleT)+'</span><span>118</span></div></div>'+
       '<div class="eps">'+L.episodes.map(function(ep,i){return '<div class="ep" style="--c:'+cols[i]+'"><span class="mono">'+e(ep.age)+'</span><h3>'+e(ep.k)+'</h3><p><b>'+e(ep.n)+'.</b> '+e(ep.d)+'</p></div>';}).join('')+'</div><div style="display:grid;gap:40px;margin-top:48px">'+S.figure('eec',lang)+S.figure('cau',lang)+'</div></div></section>';
+    h+='<section id="testigo" class="c3sec" aria-labelledby="c3title"><div id="core3d"></div></section>';
     h+='<section id="objetivos" style="padding-top:0"><div class="wrap"><span class="mono kick">'+e(n.goals)+'</span><h2 class="h2">'+e(L.goalsT)+'</h2><div class="qs">'+L.goals.map(function(g){return '<div class="q"><span class="mono">'+g.c+'</span><h3>'+e(g.q)+'</h3><p>'+e(g.d)+'</p></div>';}).join('')+'</div><p class="synth">'+e(L.synth)+'</p>'+
       '<div style="margin-top:72px"><span class="mono kick">'+e(n.methods)+'</span><h2 class="h2">'+e(L.methodsT)+'</h2><div class="methods">'+L.methods.map(function(m){return '<div class="mt"><b>'+e(m.k)+'</b><span>'+e(m.d)+'</span></div>';}).join('')+'</div></div></div></section>';
     h+='<section id="lugares" style="padding-top:0"><div class="wrap"><span class="mono kick">'+e(n.sites)+'</span><h2 class="h2">'+e(L.sitesT)+'</h2><div class="atlas"><div class="map" id="map">'+mapSvg(L)+'</div><div class="slist">'+S.sites.map(function(s){return '<button type="button" class="sl'+(s.id===sel?' on':'')+(s.exImg?'':' noph')+'" data-id="'+s.id+'">'+(s.exImg?'<div class="ph"><img src="img/'+s.exImg+'" alt="" loading="lazy" width="300" height="300"><span class="ex">'+e(L.exPhoto)+'</span></div>':'')+'<div class="b"><span class="mono">'+e(s.kind[lang])+'</span><h3>'+e(s.n)+'</h3>'+(s.tag.length?'<div class="tags">'+s.tag.map(function(t){return '<span class="tag">'+e(t)+'</span>';}).join('')+'</div>':'')+'<p>'+e(s.d[lang])+'</p></div></button>';}).join('')+'</div></div></div></section>';
@@ -280,6 +286,8 @@ footer .wrap{padding-block:24px; display:grid; gap:6px; font-size:.8rem; opacity
     h+='<section id="contacto" class="contact"><div class="wrap cgrid"><h2>'+e(n.contact)+'</h2><p class="who">'+e(S.contact)+' · '+e(L.contactPlace)+'</p></div></section></main>';
     h+='<footer><div class="wrap">'+S.logos()+'<span>'+e(L.fundingLine)+'</span><span>'+e(L.funder)+' · '+e(L.photoNote)+'</span>'+S.credit(lang)+'</div></footer>';
     document.getElementById('app').innerHTML=h;
+    window.dispatchEvent(new CustomEvent('secaba:render',{detail:{lang:lang}}));
+    if(!render.done){render.done=true; var hs=(location.hash||'').slice(1); if(hs&&hs!=='es'&&hs!=='en'){var tg=document.getElementById(hs); if(tg) setTimeout(function(){tg.scrollIntoView();},60);}}
     S.bindCredit(lang);
     document.getElementById('lang').onclick=function(){lang=lang==='es'?'en':'es'; render();};
     bindMap(L);
@@ -317,5 +325,7 @@ footer .wrap{padding-block:24px; display:grid; gap:6px; font-size:.8rem; opacity
   render();
 })();
 </script>
+<script type="module" src="js/cocolito.js"></script>
+<script type="module" src="js/testigo3d.js"></script>
 </body>
 </html>

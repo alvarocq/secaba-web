@@ -11,6 +11,7 @@ Publicación: GitHub Pages desde `main` (raíz). El repo es público porque Page
 
 ## Arquitectura
 - `content.js` define `window.SECABA` con todo el contenido compartido (textos ES/EN, equipo, lugares, cronograma, figuras, logos) y utilidades (idioma, escape, figuras).
+- 3D con Three.js 0.160.0 desde jsDelivr (módulos en `js/`). `index.html` emite el evento `secaba:render` cada vez que se repinta (p. ej. al cambiar de idioma) y los módulos reenganchan su lienzo sin reconstruir la escena. Ambos se pausan fuera de pantalla, respetan `prefers-reduced-motion` y sin WebGL caen a contenido estático.
 - Cada página pinta su HTML desde JS a partir de ese contenido. El idioma (`secaba-lang`) y el tema (`secaba-theme`) se guardan en localStorage y los comparten las dos páginas.
 - Fuente del contenido: memoria científico-técnica y solicitud del proyecto (los .docx NO se suben: contienen datos personales).
 
@@ -19,6 +20,7 @@ Publicación: GitHub Pages desde `main` (raíz). El repo es público porque Page
 - Logos en alta resolución (los actuales salen de los Word y son pequeños).
 - Figuras 1 y 2 (Jenkyns 2010, Föllmi 2012) tienen derechos de editorial: pedir permiso o redibujar.
 - Fotos de lugares: son de ejemplo (web del proyecto PY20_00783) y van marcadas así; posiciones del mapa aproximadas.
+- Testigo de Cau en 3D: capas, posiciones de los hitos y curva de δ13C son un ESQUEMA (`KEYS` y bucle de capas en `js/testigo3d.js`). Sustituir por los datos reales del sondeo (CSV de δ13C/Os y litología) cuando el equipo los pase.
 - El Carniense (CPE) que aparece en la memoria se ha dejado fuera a propósito.
 - No mostrar el correo del proyecto ni etiquetas de "IP" (decisión del cliente).
 - Crédito «Desarrollado por PXS» en el pie: el correo de PXS va codificado en `content.js` (`_k`, códigos +7 invertidos) y solo se monta al pulsar «mostrar correo». No escribirlo nunca en texto plano.
