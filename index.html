@@ -221,6 +221,14 @@ section{padding-block:clamp(64px,9vw,120px)}
 .out b{font:700 1.05rem var(--f-disp); display:block}
 .out p{font-size:.86rem; color:var(--muted)}
 .empty{margin-top:20px; border:1px dashed var(--line); border-radius:14px; padding:18px; color:var(--muted)}
+.pubs-t{font:700 1.15rem var(--f-disp); margin:24px 0 0}
+.pubs{list-style:none; padding:0; margin:14px 0 0; display:grid; gap:12px}
+.pubs a{display:grid; gap:6px; padding:16px 18px; border:1px solid var(--line); border-left:3px solid var(--warm); border-radius:14px; color:var(--ink); text-decoration:none; transition:border-color .2s, transform .2s}
+.pubs a:hover{border-color:var(--warm); transform:translateX(3px)}
+.pubs .pt{font-weight:600; line-height:1.35}
+.pubs .pj{font-size:.88rem; color:var(--muted)}
+.pubs .pd{font:500 .78rem var(--f-mono); color:var(--warm); overflow-wrap:anywhere}
+@media (prefers-reduced-motion:reduce){.pubs a{transition:none}.pubs a:hover{transform:none}}
 .contact{background:var(--ink); color:var(--bg); padding-block:clamp(32px,4vw,48px)}
 .contact .cgrid{display:grid; grid-template-columns:auto minmax(0,1fr); gap:12px 32px; align-items:center}
 @media (max-width:860px){.contact .cgrid{grid-template-columns:1fr}}
@@ -243,7 +251,7 @@ section{padding-block:clamp(64px,9vw,120px)}
 <body>
 <div class="heat" aria-hidden="true"><i id="heat"></i></div>
 <div id="app"></div>
-<script src="content.js?v=20261109f"></script>
+<script src="content.js?v=20261109g"></script>
 <script>
 (function(){
   var S=SECABA, e=S.esc, lang=S.getLang();
@@ -304,7 +312,7 @@ section{padding-block:clamp(64px,9vw,120px)}
     S.plan.forEach(function(p){g+='<div>'+e(p[lang])+'</div><div class="tr"><span style="grid-column:'+p.s+'/'+(p.e+1)+'"></span></div>';}); g+='</div></div><div class="ms">'+S.milestones.map(function(m){return '<span><b>'+m.h+'·'+L.planUnit+m.t+'</b>'+e(m[lang])+'</span>';}).join('')+'</div>';
     h+='<section id="cronograma" style="padding-top:0"><div class="wrap"><span class="mono kick">'+e(n.plan)+' · '+e(L.duration)+'</span><h2 class="h2">'+e(L.planT)+'</h2>'+g+'<div class="split" style="margin-top:72px"><h2 class="h2">'+e(L.recordT)+'</h2><div class="rec">'+S.record.map(function(r){return '<div><b>'+r.y+'</b><span>'+e(r[lang])+'</span></div>';}).join('')+'</div></div></div></section>';
     h+='<section id="equipo" style="padding-top:0"><div class="wrap"><span class="mono kick">'+e(n.team)+'</span><h2 class="h2">'+e(L.teamT)+'</h2>'+['research','work','collab'].map(function(k){return '<p class="mono gt">'+e(L.teamGroups[k])+'</p><div class="team">'+S.people[k].map(function(p){return '<div class="pp"><h3>'+e(p.n)+(p.r?'<sup>'+p.r+'</sup>':'')+'</h3><p>'+e(p.i)+' · '+e(p.f[lang])+'</p>'+(p.o?'<a href="https://orcid.org/'+p.o+'" target="_blank" rel="noopener noreferrer">ORCID '+p.o+'</a>':'')+'</div>';}).join('')+'</div>';}).join('')+'</div></section>';
-    h+='<section id="noticias" style="padding-top:0"><div class="wrap"><span class="mono kick">'+e(n.news)+'</span><h2 class="h2">'+e(L.newsT)+'</h2><p class="empty">'+e(L.newsEmpty)+'</p><div class="out">'+L.outreach.map(function(o){return '<div><b>'+e(o.k)+'</b><p>'+e(o.d)+'</p></div>';}).join('')+'</div><div class="q" style="margin-top:32px"><span class="mono">'+e(L.dataT)+'</span><p style="color:var(--ink)">'+e(L.data)+'</p><a href="'+S.ruja+'">'+e(L.dataLink)+' →</a></div></div></section>';
+    h+='<section id="noticias" style="padding-top:0"><div class="wrap"><span class="mono kick">'+e(n.news)+'</span><h2 class="h2">'+e(L.newsT)+'</h2>'+(S.pubs.length?'<h3 class="pubs-t">'+e(L.pubsT)+'</h3><ul class="pubs">'+S.pubs.map(function(p){return '<li><a href="https://doi.org/'+p.doi+'" target="_blank" rel="noopener noreferrer"><span class="pt">'+e(p.t)+'</span><span class="pj"><i>'+e(p.j)+'</i> · '+p.y+'</span><span class="pd">doi:'+p.doi+' ↗</span></a></li>';}).join('')+'</ul>':'<p class="empty">'+e(L.newsEmpty)+'</p>')+'<div class="out">'+L.outreach.map(function(o){return '<div><b>'+e(o.k)+'</b><p>'+e(o.d)+'</p></div>';}).join('')+'</div><div class="q" style="margin-top:32px"><span class="mono">'+e(L.dataT)+'</span><p style="color:var(--ink)">'+e(L.data)+'</p><a href="'+S.ruja+'">'+e(L.dataLink)+' →</a></div></div></section>';
     h+='<section id="contacto" class="contact"><div class="wrap cgrid"><h2>'+e(n.contact)+'</h2><p class="who">'+e(S.contact)+' · '+e(L.contactPlace)+'</p></div><div class="wrap fund">'+S.logos()+'<span>'+e(L.fundingLine)+'</span><span>'+e(L.funder)+' · '+e(L.photoNote)+'</span></div></section></main>';
     h+='<footer class="pxsband"><div class="wrap">'+S.credit(lang)+'</div></footer>';
     document.getElementById('app').innerHTML=h;
@@ -357,8 +365,8 @@ section{padding-block:clamp(64px,9vw,120px)}
 })();
 </script>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
-<script type="module" src="js/cocolito.js?v=20261109f"></script>
-<script type="module" src="js/testigo3d.js?v=20261109f"></script>
-<script type="module" src="js/oae3d.js?v=20261109f"></script>
+<script type="module" src="js/cocolito.js?v=20261109g"></script>
+<script type="module" src="js/testigo3d.js?v=20261109g"></script>
+<script type="module" src="js/oae3d.js?v=20261109g"></script>
 </body>
 </html>

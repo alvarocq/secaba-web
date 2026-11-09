@@ -138,6 +138,7 @@
       teamGroups: { research: "Equipo de investigación", work: "Equipo de trabajo", collab: "Colaboradores" },
       newsT: "Noticias y divulgación",
       newsEmpty: "Aquí publicaremos avances, artículos y actividades.",
+      pubsT: "Artículos publicados",
       outreach: [
         { k: "Semana de la Ciencia", d: "Fósiles e isótopos como indicadores del clima." },
         { k: "Café con Ciencia", d: "Cómo se estiman las paleotemperaturas y el CO₂ del pasado." },
@@ -218,6 +219,7 @@
       teamGroups: { research: "Research team", work: "Work team", collab: "Collaborators" },
       newsT: "News and outreach",
       newsEmpty: "Progress, papers and activities will be posted here.",
+      pubsT: "Published papers",
       outreach: [
         { k: "Science Week", d: "Fossils and isotopes as climate indicators." },
         { k: "Science Café", d: "How past temperatures and CO₂ are estimated." },
@@ -315,5 +317,12 @@
     });
   }
 
-  window.SECABA = { T: T, credit: credit, bindCredit: bindCredit, pxsMailto: pxsMailto, figs: figs, figure: figure, logos: logos, people: people, sites: sites, plan: plan, milestones: milestones, record: record, email: "jmcastro@ujaen.es", contact: "José Manuel Castro Jiménez", ruja: "https://ruja.ujaen.es/handle/10953/817", getLang: getLang, setLang: setLang, esc: esc, copyBtn: copyBtn };
+  // Artículos del proyecto: solo título, revista, año y DOI (enlace a la editorial). Más reciente primero.
+  var pubs = [
+    { y: 2026, j: "Global and Planetary Change", doi: "10.1016/j.gloplacha.2025.105170", t: "Immediate and delayed biotic and environmental responses to the carbon cycle perturbation at the onset of OAE 1a – Insights from a new high-resolution record from the Western Tethys" },
+    { y: 2025, j: "Palaeogeography, Palaeoclimatology, Palaeoecology", doi: "10.1016/j.palaeo.2025.113167", t: "Influence of local factors on the expression of the early Aptian OAE 1a – insights from a pelagic basin in the Western Tethys" },
+    { y: 2025, j: "Cretaceous Research", doi: "10.1016/j.cretres.2024.106032", t: "Early Aptian development and OAE 1a-linked demise of a carbonate platform in the western Tethys: Lower Cretaceous of Sierra Mariola (South Iberian Paleomargin, SE Spain)" }
+  ];
+
+  window.SECABA = { T: T, pubs: pubs, credit: credit, bindCredit: bindCredit, pxsMailto: pxsMailto, figs: figs, figure: figure, logos: logos, people: people, sites: sites, plan: plan, milestones: milestones, record: record, email: "jmcastro@ujaen.es", contact: "José Manuel Castro Jiménez", ruja: "https://ruja.ujaen.es/handle/10953/817", getLang: getLang, setLang: setLang, esc: esc, copyBtn: copyBtn };
 })();
