@@ -282,7 +282,7 @@
   function credit(lang) {
     var es = lang !== "en";
     var mono = 'font-family:IBM Plex Mono,ui-monospace,Menlo,monospace';
-    return '<div class="pxs" style="margin-top:14px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px 32px;padding:clamp(20px,3vw,32px);border:1px solid color-mix(in srgb,currentColor 28%,transparent);border-radius:20px">' +
+    return '<div class="pxs" id="pxs" style="scroll-margin-top:120px;margin-top:14px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px 32px;padding:clamp(20px,3vw,32px);border:1px solid color-mix(in srgb,currentColor 28%,transparent);border-radius:20px">' +
       '<div style="display:grid;gap:6px;min-width:0;max-width:60ch">' +
         '<span style="' + mono + ';font-size:.74rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;opacity:.75">' + (es ? "¿Te gusta esta web?" : "Like this website?") + "</span>" +
         '<span style="font-size:clamp(1.35rem,2.8vw,2rem);font-weight:700;line-height:1.15;opacity:1">' + (es ? "Diseñada y desarrollada por <b>PXS</b>" : "Designed and built by <b>PXS</b>") + "</span>" +
