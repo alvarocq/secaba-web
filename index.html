@@ -32,9 +32,23 @@ p{margin:0}
 .mono{font:500 .74rem/1.35 var(--f-mono); letter-spacing:.06em; text-transform:uppercase}
 .wrap{max-width:1240px; margin:0 auto; padding-left:max(16px,env(safe-area-inset-left,0px)); padding-right:max(16px,env(safe-area-inset-right,0px))}
 /* Termómetro superior: progreso de lectura de frío a calor */
-.heat{position:fixed; left:0; right:0; top:0; height:calc(4px + env(safe-area-inset-top,0px)); z-index:20; background:var(--line)}
-.heat i{display:block; height:100%; width:0; background:linear-gradient(90deg,var(--cold),var(--warm),var(--hot))}
-header.bar{display:flex; gap:16px; align-items:center; flex-wrap:wrap; padding-block:18px}
+/* Barra de progreso de lectura: pegada al borde inferior del menú fijo, de frío a calor */
+.heat{position:fixed; left:0; right:0; top:calc(env(safe-area-inset-top,0px) + var(--hdr,0px) - 1px); height:5px; z-index:20; pointer-events:none; background:color-mix(in srgb,var(--line) 75%,transparent)}
+.heat i{position:relative; display:block; height:100%; width:0; border-radius:0 3px 3px 0; background:linear-gradient(90deg,var(--cold),var(--warm) 60%,var(--hot)); box-shadow:0 0 14px color-mix(in srgb,var(--warm) 55%,transparent)}
+.heat i::after{content:""; position:absolute; right:-6px; top:50%; width:12px; height:12px; margin-top:-6px; border-radius:50%; background:var(--hot); box-shadow:0 0 0 3px color-mix(in srgb,var(--hot) 25%,transparent),0 0 12px var(--hot)}
+/* Menú superior fijo: siempre visible al hacer scroll */
+.topbar{position:sticky; top:env(safe-area-inset-top,0px); z-index:15; background:color-mix(in srgb,var(--bg) 88%,transparent); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border-bottom:1px solid var(--line)}
+body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top,0px); z-index:16; background:var(--bg)}
+html{scroll-padding-top:calc(var(--hdr,64px) + 8px)}
+header.bar{display:flex; gap:10px 16px; align-items:center; flex-wrap:wrap; padding-block:12px}
+/* Móvil: logo y botones en una fila; los enlaces en otra, deslizable */
+@media (max-width:720px){
+  .topbar header.bar{gap:8px 10px; padding-block:10px}
+  .topbar header.bar nav{order:3; flex-basis:100%; flex-wrap:nowrap; overflow-x:auto; margin-left:0; padding-bottom:2px; scrollbar-width:none}
+  .topbar header.bar nav::-webkit-scrollbar{display:none}
+  .topbar header.bar nav a{white-space:nowrap}
+  .topbar .tools{margin-left:auto}
+}
 header .logo{font:800 1.2rem var(--f-disp); letter-spacing:.02em}
 header nav{display:flex; gap:4px 16px; flex-wrap:wrap; margin-left:auto; font-size:.88rem}
 header nav a{text-decoration:none; color:var(--muted)} header nav a:hover{color:var(--ink)}
@@ -253,7 +267,7 @@ footer .wrap{padding-block:24px; display:grid; gap:6px; font-size:.8rem; opacity
   function render(){
     var L=S.T[lang], x=X[lang], n=L.nav; S.setLang(lang); var h='';
     var nav=[['episodios',n.episodes],['testigo',lang==='es'?'Testigo 3D':'3D core'],['objetivos',n.goals],['lugares',n.sites],['cronograma',n.plan],['equipo',n.team],['contacto',n.contact]];
-    h+='<div class="wrap"><header class="bar"><span class="logo">SECABA</span><nav aria-label="Secciones">'+nav.map(function(a){return '<a href="#'+a[0]+'">'+e(a[1])+'</a>';}).join('')+'</nav><div class="tools"><a class="lang" href="tecnica.html" style="text-decoration:none">'+(lang==='es'?'Especialistas':'Specialists')+'</a><button class="lang ico-btn" id="theme" type="button"></button><button class="lang" id="lang" type="button" aria-label="'+e(L.otherLabel)+'">'+L.other+'</button></div></header></div>';
+    h+='<div class="topbar"><div class="wrap"><header class="bar"><span class="logo">SECABA</span><nav aria-label="Secciones">'+nav.map(function(a){return '<a href="#'+a[0]+'">'+e(a[1])+'</a>';}).join('')+'</nav><div class="tools"><a class="lang" href="tecnica.html" style="text-decoration:none">'+(lang==='es'?'Especialistas':'Specialists')+'</a><button class="lang ico-btn" id="theme" type="button"></button><button class="lang" id="lang" type="button" aria-label="'+e(L.otherLabel)+'">'+L.other+'</button></div></header></div></div>';
     var tech=lang==='es'?{b:'Web para especialistas',d:'Antecedentes, objetivos específicos, metodología, laboratorios, plan de trabajo y bibliografía.'}:{b:'Website for specialists',d:'Background, specific aims, methods, laboratories, work plan and references.'};
     h+='<main><div class="hero wrap"><div id="coco3d" class="coco3d" aria-hidden="true"></div><p class="mono">'+e(x.h1[0])+' '+e(x.h1[1])+'</p><p class="kind">'+(lang==='es'?'Proyecto de investigación · Universidad de Jaén':'Research project · University of Jaén')+'</p><h1><span>SECABA</span></h1><p class="ptitle">'+e(L.title)+'</p><p class="psub">'+e(L.subtitle)+'</p><div class="row"><p class="lead">'+e(L.lead)+'</p><div><a class="cta" href="tecnica.html"><b>'+e(tech.b)+' →</b><span>'+e(tech.d)+'</span></a><div class="ref mono"><span>'+e(L.ref)+'</span><span>'+e(L.host)+'</span><span>'+e(L.duration)+'</span><span class="todo">'+e(L.datesTodo)+'</span></div></div></div></div>';
     h+='<div class="wrap"><div class="facts">'+L.facts.map(function(f){return '<div class="fact"><b>'+e(f.v)+'<small>'+e(f.u)+'</small></b><p>'+e(f.d)+'</p></div>';}).join('')+'</div></div>';
@@ -286,6 +300,7 @@ footer .wrap{padding-block:24px; display:grid; gap:6px; font-size:.8rem; opacity
     h+='<section id="contacto" class="contact"><div class="wrap cgrid"><h2>'+e(n.contact)+'</h2><p class="who">'+e(S.contact)+' · '+e(L.contactPlace)+'</p></div></section></main>';
     h+='<footer><div class="wrap">'+S.logos()+'<span>'+e(L.fundingLine)+'</span><span>'+e(L.funder)+' · '+e(L.photoNote)+'</span>'+S.credit(lang)+'</div></footer>';
     document.getElementById('app').innerHTML=h;
+    setHdr();
     window.dispatchEvent(new CustomEvent('secaba:render',{detail:{lang:lang}}));
     if(!render.done){render.done=true; var hs=(location.hash||'').slice(1); if(hs&&hs!=='es'&&hs!=='en'){var tg=document.getElementById(hs); if(tg) setTimeout(function(){tg.scrollIntoView();},60);}}
     S.bindCredit(lang);
@@ -320,6 +335,14 @@ footer .wrap{padding-block:24px; display:grid; gap:6px; font-size:.8rem; opacity
     b.setAttribute('aria-label',d?(es?'Cambiar a modo claro':'Switch to light mode'):(es?'Cambiar a modo oscuro':'Switch to dark mode'));
   }
   try{matchMedia('(prefers-color-scheme: dark)').addEventListener('change',paintTheme);}catch(_){}
+  // Altura del menú fijo, para que el testigo 3D y los anclajes empiecen justo debajo
+  var hdrRO=null;
+  function setHdr(){
+    var tb=document.querySelector('.topbar'); if(!tb) return;
+    var put=function(){document.documentElement.style.setProperty('--hdr',tb.offsetHeight+'px');};
+    put();
+    if('ResizeObserver' in window){ if(hdrRO) hdrRO.disconnect(); hdrRO=new ResizeObserver(put); hdrRO.observe(tb); }
+  }
   var heat=document.getElementById('heat');
   addEventListener('scroll',function(){var m=document.documentElement.scrollHeight-innerHeight; heat.style.width=(m>0?Math.min(100,scrollY/m*100):0)+'%';},{passive:true});
   render();
