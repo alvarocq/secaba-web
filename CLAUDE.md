@@ -24,6 +24,7 @@ Publicación: GitHub Pages desde `main` (raíz). El repo es público porque Page
 - Modelo 3D del evento anóxico (`js/oae3d.js`): recreación propia del esquema de Jenkyns (2010); la figura 1 original sigue solo en la web técnica. Textos de los pasos pendientes de revisión por el equipo. Usa import map (`three` y `three/addons/`) definido en `index.html`.
 - Testigo de Cau en 3D: capas, posiciones de los hitos y curva de δ13C son un ESQUEMA (`KEYS` y bucle de capas en `js/testigo3d.js`). Sustituir por los datos reales del sondeo (CSV de δ13C/Os y litología) cuando el equipo los pase.
 - El Carniense (CPE) que aparece en la memoria se ha dejado fuera a propósito.
+- Publicaciones del proyecto: lista `pubs` en `content.js` (título, revista, año, DOI). Solo enlace al DOI; los PDF no se suben (decisión del cliente).
 - No mostrar el correo del proyecto ni etiquetas de "IP" (decisión del cliente).
 - Crédito «Desarrollado por PXS» en el pie: el correo de PXS va codificado en `content.js` (`_k`, códigos +7 invertidos) y solo se monta al pulsar «mostrar correo». No escribirlo nunca en texto plano.
 

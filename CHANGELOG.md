@@ -4,6 +4,7 @@ Formato: [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) · versione
 
 ## [Sin publicar]
 ### Añadido
+- Artículos publicados del proyecto (Global and Planetary Change 2026, Palaeo3 2025, Cretaceous Research 2025) con título, revista, año y enlace al DOI, en la web divulgativa (Noticias) y en la técnica (Publicaciones). Los datos están en `pubs` de `content.js`.
 - Web divulgativa (`index.html`): portada SECABA, cifras clave, hipótesis destacada, comparación de CO₂, episodios, objetivos, métodos, mapa de lugares, cronograma, trayectoria, equipo y divulgación.
 - Web técnica (`tecnica.html`): ficha, antecedentes, hipótesis, objetivos específicos, metodología, plan de trabajo con responsables, equipo, laboratorios, producción prevista, gestión de datos y bibliografía.
 - Contenido bilingüe ES/EN y modo claro/oscuro seleccionable (claro por defecto).

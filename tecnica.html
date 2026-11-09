@@ -90,6 +90,8 @@ td.k{font-family:var(--f-mono); font-size:.8rem; white-space:nowrap; color:var(-
 .refs li{font-size:.9rem; padding-left:14px; border-left:2px solid var(--line)}
 .refs a{color:var(--muted); font-family:var(--f-mono); font-size:.78rem; overflow-wrap:anywhere}
 .refs a:hover{color:var(--accent)}
+.refs.pubs li{border-left-color:var(--accent)}
+.refs.pubs b{font-weight:600}
 .figs{display:grid; gap:28px}
 .small{max-width:560px}
 .empty{border:1px dashed var(--line); border-radius:6px; padding:16px; color:var(--muted); font-size:.9rem}
@@ -108,7 +110,7 @@ footer span{opacity:.8}
 </head>
 <body>
 <div id="app"></div>
-<script src="content.js?v=20261109f"></script>
+<script src="content.js?v=20261109g"></script>
 <script>
 (function(){
   var S=SECABA, e=S.esc, lang=S.getLang();
@@ -282,7 +284,7 @@ footer span{opacity:.8}
     h+=sec('prev',n++,'<p>'+e(X.prevIntro)+'</p><div class="tbl"><table><tbody>'+S.record.map(function(r){return '<tr><td class="k">'+r.y+'</td><td>'+e(r[lang])+'</td></tr>';}).join('')+'</tbody></table></div>');
     h+=sec('prod',n++,'<div class="tbl"><table><tbody>'+X.prod.map(function(p){return '<tr><td class="k" style="font-size:1rem">'+p[0]+'</td><td>'+e(p[1])+'</td></tr>';}).join('')+'</tbody></table></div><ol style="margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:.92rem">'+X.prodTopics.map(function(x){return '<li>'+e(x)+'</li>';}).join('')+'</ol><p style="color:var(--muted);font-size:.9rem">'+e(X.venues)+'</p>');
     h+=sec('datos',n++,'<ul style="margin:0;padding-left:1.1em;display:grid;gap:4px">'+X.datos.map(function(x){return '<li>'+e(x)+'</li>';}).join('')+'</ul><p><a href="'+S.ruja+'">'+e(L.dataLink)+' →</a></p>');
-    h+=sec('pubs',n++,'<p class="empty">'+e(X.pubsEmpty)+'</p>');
+    h+=sec('pubs',n++,S.pubs.length?'<ol class="refs pubs">'+S.pubs.map(function(p){return '<li><b>'+e(p.t)+'</b>. <i>'+e(p.j)+'</i>, '+p.y+'. <a href="https://doi.org/'+p.doi+'" target="_blank" rel="noopener noreferrer">doi:'+p.doi+'</a></li>';}).join('')+'</ol>':'<p class="empty">'+e(X.pubsEmpty)+'</p>');
     h+=sec('refs',n++,'<ol class="refs">'+refs.map(function(r){return '<li>'+e(r[0])+(r[1]?' <a href="https://doi.org/'+r[1]+'">doi:'+r[1]+'</a>':'')+'</li>';}).join('')+'</ol>');
     h+='</main></div><footer><div class="wrap">'+S.logos()+'<span>'+e(L.fundingLine)+'</span><span>'+e(L.funder)+'</span></div></footer><div class="pxsband"><div class="wrap">'+S.credit(lang)+'</div></div>';
     document.getElementById('app').innerHTML=h;
