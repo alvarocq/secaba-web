@@ -284,13 +284,12 @@
     var mono = 'font-family:IBM Plex Mono,ui-monospace,Menlo,monospace';
     return '<div class="pxs" id="pxs" style="scroll-margin-top:120px;margin-top:14px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px 32px;padding:clamp(20px,3vw,32px);border:1px solid color-mix(in srgb,currentColor 28%,transparent);border-radius:20px">' +
       '<div style="display:grid;gap:6px;min-width:0;max-width:60ch">' +
-        '<span style="' + mono + ';font-size:.74rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;opacity:.75">' + (es ? "¿Te gusta esta web?" : "Like this website?") + "</span>" +
         '<span style="font-size:clamp(1.35rem,2.8vw,2rem);font-weight:700;line-height:1.15;opacity:1">' + (es ? "Diseñada y desarrollada por <b>PXS</b>" : "Designed and built by <b>PXS</b>") + "</span>" +
         '<span style="font-size:.98rem;line-height:1.5;opacity:.82">' + (es ? "Hacemos webs a medida para proyectos de investigación, grupos y empresas. Pide la tuya." : "We build custom websites for research projects, groups and companies. Ask for yours.") + "</span>" +
       "</div>" +
       '<div id="pxs-contact" style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;font-size:1.05rem">' +
         '<button type="button" id="pxs-reveal" style="font-family:inherit;font-size:1rem;font-weight:600;line-height:1;padding:15px 24px;border-radius:999px;border:2px solid currentColor;background:transparent;color:inherit;cursor:pointer;white-space:nowrap">' +
-        (es ? "Quiero una web así →" : "I want a website like this →") + "</button>" +
+        (es ? "Empieza tu proyecto →" : "Start your project →") + "</button>" +
       "</div></div>";
   }
   // Enlace mailto de PXS montado en el momento (el correo no está en texto plano)
