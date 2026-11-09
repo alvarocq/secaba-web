@@ -277,5 +277,27 @@
       "</div>";
   }
 
-  window.SECABA = { T: T, figs: figs, figure: figure, logos: logos, people: people, sites: sites, plan: plan, milestones: milestones, record: record, email: "jmcastro@ujaen.es", contact: "José Manuel Castro Jiménez", ruja: "https://ruja.ujaen.es/handle/10953/817", getLang: getLang, setLang: setLang, esc: esc, copyBtn: copyBtn };
+  // Crédito de desarrollo. El correo no está en texto plano: se monta solo cuando una persona pulsa el botón.
+  var _k = [116, 118, 106, 53, 119, 119, 104, 52, 122, 127, 119, 71, 118, 121, 123, 122, 104, 106, 118, 121, 104, 125, 115, 104];
+  function credit(lang) {
+    var es = lang !== "en";
+    return '<p class="credit" style="margin:0;font-size:.8rem;opacity:.85;display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center">' +
+      "<span>" + (es ? "Desarrollado por" : "Developed by") + " <b>PXS</b></span><span aria-hidden=\"true\">·</span>" +
+      '<span id="pxs-contact">' + (es ? "Contacto:" : "Contact:") + ' <button type="button" id="pxs-reveal" style="font:inherit;color:inherit;background:none;border:0;padding:0;text-decoration:underline;cursor:pointer">' +
+      (es ? "mostrar correo" : "show email") + "</button></span></p>";
+  }
+  function bindCredit(lang) {
+    var b = document.getElementById("pxs-reveal");
+    if (!b) return;
+    b.addEventListener("click", function () {
+      var m = _k.slice().reverse().map(function (n) { return String.fromCharCode(n - 7); }).join("");
+      var a = document.createElement("a");
+      a.href = "mai" + "lto:" + m; a.textContent = m; a.style.color = "inherit";
+      var box = document.getElementById("pxs-contact");
+      box.textContent = (lang === "en" ? "Contact: " : "Contacto: ");
+      box.appendChild(a);
+    });
+  }
+
+  window.SECABA = { T: T, credit: credit, bindCredit: bindCredit, figs: figs, figure: figure, logos: logos, people: people, sites: sites, plan: plan, milestones: milestones, record: record, email: "jmcastro@ujaen.es", contact: "José Manuel Castro Jiménez", ruja: "https://ruja.ujaen.es/handle/10953/817", getLang: getLang, setLang: setLang, esc: esc, copyBtn: copyBtn };
 })();

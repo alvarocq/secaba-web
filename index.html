@@ -276,8 +276,9 @@ footer .wrap{padding-block:24px; display:grid; gap:6px; font-size:.8rem; opacity
     h+='<section id="equipo" style="padding-top:0"><div class="wrap"><span class="mono kick">'+e(n.team)+'</span><h2 class="h2">'+e(L.teamT)+'</h2>'+['research','work','collab'].map(function(k){return '<p class="mono gt">'+e(L.teamGroups[k])+'</p><div class="team">'+S.people[k].map(function(p){return '<div class="pp"><h3>'+e(p.n)+(p.r?'<sup>'+p.r+'</sup>':'')+'</h3><p>'+e(p.i)+' · '+e(p.f[lang])+'</p>'+(p.o?'<a href="https://orcid.org/'+p.o+'">ORCID '+p.o+'</a>':'')+'</div>';}).join('')+'</div>';}).join('')+'</div></section>';
     h+='<section id="noticias" style="padding-top:0"><div class="wrap"><span class="mono kick">'+e(n.news)+'</span><h2 class="h2">'+e(L.newsT)+'</h2><p class="empty">'+e(L.newsEmpty)+'</p><div class="out">'+L.outreach.map(function(o){return '<div><b>'+e(o.k)+'</b><p>'+e(o.d)+'</p></div>';}).join('')+'</div><div class="q" style="margin-top:32px"><span class="mono">'+e(L.dataT)+'</span><p style="color:var(--ink)">'+e(L.data)+'</p><a href="'+S.ruja+'">'+e(L.dataLink)+' →</a></div></div></section>';
     h+='<section id="contacto" class="contact"><div class="wrap cgrid"><h2>'+e(n.contact)+'</h2><p class="who">'+e(S.contact)+' · '+e(L.contactPlace)+'</p></div></section></main>';
-    h+='<footer><div class="wrap">'+S.logos()+'<span>'+e(L.fundingLine)+'</span><span>'+e(L.funder)+' · '+e(L.photoNote)+'</span></div></footer>';
+    h+='<footer><div class="wrap">'+S.logos()+'<span>'+e(L.fundingLine)+'</span><span>'+e(L.funder)+' · '+e(L.photoNote)+'</span>'+S.credit(lang)+'</div></footer>';
     document.getElementById('app').innerHTML=h;
+    S.bindCredit(lang);
     document.getElementById('lang').onclick=function(){lang=lang==='es'?'en':'es'; render();};
     bindMap(L);
     paintTheme();

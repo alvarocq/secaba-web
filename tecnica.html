@@ -274,8 +274,9 @@ footer span{opacity:.8}
     h+=sec('datos',n++,'<ul style="margin:0;padding-left:1.1em;display:grid;gap:4px">'+X.datos.map(function(x){return '<li>'+e(x)+'</li>';}).join('')+'</ul><p><a href="'+S.ruja+'">'+e(L.dataLink)+' →</a></p>');
     h+=sec('pubs',n++,'<p class="empty">'+e(X.pubsEmpty)+'</p>');
     h+=sec('refs',n++,'<ol class="refs">'+refs.map(function(r){return '<li>'+e(r[0])+(r[1]?' <a href="https://doi.org/'+r[1]+'">doi:'+r[1]+'</a>':'')+'</li>';}).join('')+'</ol>');
-    h+='</main></div><footer><div class="wrap">'+S.logos()+'<span>'+e(L.fundingLine)+'</span><span>'+e(L.funder)+'</span></div></footer>';
+    h+='</main></div><footer><div class="wrap">'+S.logos()+'<span>'+e(L.fundingLine)+'</span><span>'+e(L.funder)+'</span>'+S.credit(lang)+'</div></footer>';
     document.getElementById('app').innerHTML=h;
+    S.bindCredit(lang);
     document.getElementById('lang').onclick=function(){lang=lang==='es'?'en':'es'; render();};
     var tb=document.getElementById('theme');
     function paint(){var d=isDark(); tb.innerHTML=(d?SUN:MOON)+'<span>'+(d?X.light:X.dark)+'</span>'; tb.setAttribute('aria-label',d?X.toLight:X.toDark);}
