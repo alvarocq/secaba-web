@@ -278,7 +278,7 @@
   }
 
   // Crédito de desarrollo. El correo no está en texto plano: se monta solo cuando una persona pulsa el botón.
-  var _k = [116, 118, 106, 53, 119, 119, 104, 52, 122, 127, 119, 71, 118, 121, 123, 122, 104, 106, 118, 121, 104, 125, 115, 104];
+  var _k = [116, 118, 106, 53, 119, 119, 104, 52, 122, 127, 119, 71, 118, 109, 117, 112];
   function credit(lang) {
     var es = lang !== "en";
     var mono = 'font-family:IBM Plex Mono,ui-monospace,Menlo,monospace';
