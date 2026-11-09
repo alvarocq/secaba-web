@@ -64,7 +64,7 @@ function injectCSS() {
 .c3-intro{max-width:62ch;font-size:clamp(1.02rem,1.5vw,1.2rem);color:rgba(238,242,244,.88)}
 .c3-note{max-width:70ch;font:500 .74rem/1.5 "IBM Plex Mono",ui-monospace,monospace;color:#f2c14e}
 .c3-scroll{position:relative;height:420vh}
-.c3-stage{position:sticky;top:0;height:100vh;overflow:hidden}
+.c3-stage{position:sticky;top:var(--hdr,0px);height:calc(100vh - var(--hdr,0px));overflow:hidden}
 .c3-canvas{position:absolute;inset:0}
 .c3-canvas canvas{width:100%;height:100%;display:block}
 .c3-labels{position:absolute;inset:0;pointer-events:none}
@@ -151,8 +151,9 @@ function render3d() {
   if (!S.host) return;
   const root = S.host.querySelector(".c3-scroll");
   const r = root.getBoundingClientRect();
-  const span = Math.max(1, r.height - innerHeight);
-  const p = Math.min(1, Math.max(0, -r.top / span));
+  const span = Math.max(1, r.height - S.stage.clientHeight);
+  const hdr = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--hdr")) || 0;
+  const p = Math.min(1, Math.max(0, (hdr - r.top) / span));
   const target = 1 + p * (LEN - 3);
   S.dc = reduced ? target : S.dc + (target - S.dc) * 0.12;
   const yc = -S.dc / U;
