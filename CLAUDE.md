@@ -20,7 +20,8 @@ Publicación: GitHub Pages desde `main` (raíz). El repo es público porque Page
 - Figuras 1 y 2 (Jenkyns 2010, Föllmi 2012) tienen derechos de editorial: pedir permiso o redibujar.
 - Fotos de lugares: son de ejemplo (web del proyecto PY20_00783) y van marcadas así; posiciones del mapa aproximadas.
 - El Carniense (CPE) que aparece en la memoria se ha dejado fuera a propósito.
-- No mostrar el correo de contacto ni etiquetas de "IP" (decisión del cliente).
+- No mostrar el correo del proyecto ni etiquetas de "IP" (decisión del cliente).
+- Crédito «Desarrollado por PXS» en el pie: el correo de PXS va codificado en `content.js` (`_k`, códigos +7 invertidos) y solo se monta al pulsar «mostrar correo». No escribirlo nunca en texto plano.
 
 ## Convenciones
 Las generales están en `~/.claude/CLAUDE.md`.
