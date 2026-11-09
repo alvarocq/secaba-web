@@ -26,6 +26,8 @@ y abrir <http://localhost:8000>.
 | `index.html` | Web divulgativa (diseño «Invernadero») |
 | `tecnica.html` | Web técnica: antecedentes, objetivos, metodología, plan de trabajo, laboratorios y bibliografía |
 | `content.js` | Contenido compartido en ES/EN: textos, equipo, lugares, cronograma, figuras y logos |
+| `js/cocolito.js` | Cocolito 3D de la portada (Three.js) |
+| `js/testigo3d.js` | Sección del testigo de Cau en 3D (Three.js) |
 | `img/` | Figuras de la memoria, logos de financiación y fotos de ejemplo de los lugares |
 
 Para cambiar un texto común a las dos webs se edita `content.js`; los textos propios de la web técnica están dentro de `tecnica.html`.
