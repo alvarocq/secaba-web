@@ -1,0 +1,11 @@
+name: Mejora o funcionalidad
+description: Algo nuevo o un cambio en lo que ya existe
+labels: [mejora]
+body:
+  - type: textarea
+    attributes: { label: Qué quiero, description: El resultado, no la solución técnica }
+    validations: { required: true }
+  - type: textarea
+    attributes: { label: Para qué, description: Quién lo usa y qué problema resuelve }
+  - type: textarea
+    attributes: { label: Cómo sabré que está hecho, placeholder: "- Se puede…\n- Se ve…" }

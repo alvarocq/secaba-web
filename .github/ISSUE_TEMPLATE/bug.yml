@@ -1,0 +1,12 @@
+name: Error
+description: Algo no funciona como debería
+labels: [bug]
+body:
+  - type: textarea
+    attributes: { label: Qué pasa, description: Lo que ves y lo que esperabas ver }
+    validations: { required: true }
+  - type: textarea
+    attributes: { label: Cómo reproducirlo, placeholder: "1. Entro en…\n2. Pulso…" }
+    validations: { required: true }
+  - type: textarea
+    attributes: { label: Capturas o mensajes de error }
