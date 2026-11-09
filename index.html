@@ -32,8 +32,10 @@ p{margin:0}
 .mono{font:500 .74rem/1.35 var(--f-mono); letter-spacing:.06em; text-transform:uppercase}
 .wrap{max-width:1240px; margin:0 auto; padding-left:max(16px,env(safe-area-inset-left,0px)); padding-right:max(16px,env(safe-area-inset-right,0px))}
 /* Termómetro superior: progreso de lectura de frío a calor */
-.heat{position:fixed; left:0; right:0; top:0; height:calc(4px + env(safe-area-inset-top,0px)); z-index:20; background:var(--line)}
-.heat i{display:block; height:100%; width:0; background:linear-gradient(90deg,var(--cold),var(--warm),var(--hot))}
+/* Barra de progreso de lectura: pegada al borde inferior del menú fijo, de frío a calor */
+.heat{position:fixed; left:0; right:0; top:calc(env(safe-area-inset-top,0px) + var(--hdr,0px) - 1px); height:5px; z-index:20; pointer-events:none; background:color-mix(in srgb,var(--line) 75%,transparent)}
+.heat i{position:relative; display:block; height:100%; width:0; border-radius:0 3px 3px 0; background:linear-gradient(90deg,var(--cold),var(--warm) 60%,var(--hot)); box-shadow:0 0 14px color-mix(in srgb,var(--warm) 55%,transparent)}
+.heat i::after{content:""; position:absolute; right:-6px; top:50%; width:12px; height:12px; margin-top:-6px; border-radius:50%; background:var(--hot); box-shadow:0 0 0 3px color-mix(in srgb,var(--hot) 25%,transparent),0 0 12px var(--hot)}
 /* Menú superior fijo: siempre visible al hacer scroll */
 .topbar{position:sticky; top:env(safe-area-inset-top,0px); z-index:15; background:color-mix(in srgb,var(--bg) 88%,transparent); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border-bottom:1px solid var(--line)}
 body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top,0px); z-index:16; background:var(--bg)}
