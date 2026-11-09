@@ -3,7 +3,7 @@
 <!-- Contexto para Claude Code. Mantenerlo corto y al día: solo lo que no se deduce del código. -->
 
 ## Objetivo
-Web estática del proyecto de investigación SECABA (PID2023-151264NB-I00, Universidad de Jaén). Dos versiones: divulgativa (`index.html`) y técnica para especialistas (`tecnica.html`). Bilingüe ES/EN, modo claro/oscuro. Financiada con la partida de difusión del proyecto.
+Web estática del proyecto de investigación SECABA (PID2023-151264NB-I00, Universidad de Jaén). Dos versiones: divulgativa (`index.html`) y técnica para especialistas (`tecnica.html`). Bilingüe ES/EN, modo claro por defecto con opción de oscuro (el visitante elige; no sigue al sistema). Financiada con la partida de difusión del proyecto.
 
 ## Comandos
 Sin build ni dependencias. Para verla en local: `python3 -m http.server 8000`.
