@@ -7,6 +7,7 @@ Web estática del proyecto de investigación SECABA (PID2023-151264NB-I00, Unive
 
 ## Comandos
 Sin build ni dependencias. Para verla en local: `python3 -m http.server 8000`.
+Al publicar cambios en JS, subir el `?v=` de los `<script src>` en `index.html` y `tecnica.html` (GitHub Pages cachea 10 min).
 Publicación: GitHub Pages desde `main` (raíz). El repo es público porque Pages no funciona en privados con cuenta gratuita.
 
 ## Arquitectura

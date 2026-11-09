@@ -293,6 +293,11 @@
         (es ? "Quiero una web así →" : "I want a website like this →") + "</button>" +
       "</div></div>";
   }
+  // Enlace mailto de PXS montado en el momento (el correo no está en texto plano)
+  function pxsMailto(lang) {
+    var m = _k.slice().reverse().map(function (n) { return String.fromCharCode(n - 7); }).join("");
+    return "mai" + "lto:" + m + "?subject=" + encodeURIComponent(lang === "en" ? "I want a website like SECABA's" : "Quiero una web como la de SECABA");
+  }
   function bindCredit(lang) {
     var b = document.getElementById("pxs-reveal");
     if (!b) return;
@@ -311,5 +316,5 @@
     });
   }
 
-  window.SECABA = { T: T, credit: credit, bindCredit: bindCredit, figs: figs, figure: figure, logos: logos, people: people, sites: sites, plan: plan, milestones: milestones, record: record, email: "jmcastro@ujaen.es", contact: "José Manuel Castro Jiménez", ruja: "https://ruja.ujaen.es/handle/10953/817", getLang: getLang, setLang: setLang, esc: esc, copyBtn: copyBtn };
+  window.SECABA = { T: T, credit: credit, bindCredit: bindCredit, pxsMailto: pxsMailto, figs: figs, figure: figure, logos: logos, people: people, sites: sites, plan: plan, milestones: milestones, record: record, email: "jmcastro@ujaen.es", contact: "José Manuel Castro Jiménez", ruja: "https://ruja.ujaen.es/handle/10953/817", getLang: getLang, setLang: setLang, esc: esc, copyBtn: copyBtn };
 })();
