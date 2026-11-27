@@ -6,7 +6,7 @@
 <!-- Modo claro por defecto; se respeta la elección guardada del visitante -->
 <script>(function(){var t="light";try{var s=localStorage.getItem("secaba-theme");if(s==="dark"||s==="light")t=s;}catch(e){}document.documentElement.setAttribute("data-theme",t);})();</script>
 <title>SECABA · Técnica</title>
-<meta name="description" content="SECABA (PID2023-151264NB-I00): información técnica para especialistas. Antecedentes, objetivos, metodología, plan de trabajo y bibliografía.">
+<meta name="description" content="SECABA (PID2023-151264NB-I00): información técnica para especialistas. Antecedentes, objetivos, metodología, equipo y bibliografía.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -110,7 +110,7 @@ footer span{opacity:.8}
 </head>
 <body>
 <div id="app"></div>
-<script src="content.js?v=20261127a"></script>
+<script src="content.js?v=20261127b"></script>
 <script>
 (function(){
   var S=SECABA, e=S.esc, lang=S.getLang();
@@ -260,7 +260,7 @@ footer span{opacity:.8}
   function render(){
     var L=S.T[lang], X=TX[lang], s=X.s; S.setLang(lang);
     document.title='SECABA · '+(lang==='es'?'Técnica':'Technical');
-    var ids=['ficha','ant','hip','obj','met','mat','plan','equipo','prev','pubs','refs'];
+    var ids=['ficha','ant','hip','obj','met','mat','equipo','pubs','refs'];
     var h='<div class="band"><div class="wrap"><div class="top"><span class="brand">SECABA</span><span class="tag">'+e(X.tag)+'</span><div class="tools"><a class="btn" href="./">←'+e(X.back)+'</a><button class="btn" id="theme" type="button"></button><button class="btn" id="lang" type="button" aria-label="'+e(L.otherLabel)+'">'+L.other+'</button></div></div>';
     h+='<div class="head"><span class="eyebrow">'+e(L.ref)+'</span><h1>'+e(L.title)+': '+e(L.subtitle.charAt(0).toLowerCase()+L.subtitle.slice(1))+'</h1><p class="en">'+(lang==='es'?e(S.T.en.title)+': '+e(S.T.en.subtitle.toLowerCase()):e(S.T.es.title)+': '+e(S.T.es.subtitle.toLowerCase()))+'</p></div></div></div>';
     h+='<div class="wrap layout"><nav class="toc" aria-label="'+e(X.toc)+'"><span class="lbl">'+e(X.toc)+'</span>'+ids.map(function(k,i){return '<a href="#'+k+'">'+(i+1)+'. '+e(s[k])+'</a>';}).join('')+'</nav><main>';
@@ -268,19 +268,13 @@ footer span{opacity:.8}
     var n=0;
     h+=sec('ficha',n++,'<dl class="facts">'+X.f.map(function(r){return '<dt>'+e(r[0])+'</dt><dd>'+r[1]+'</dd>';}).join('')+'</dl>');
     h+=sec('ant',n++,'<div class="prose">'+X.ant.map(function(p){return '<p>'+p+'</p>';}).join('')+'</div><div class="figs"><div class="small">'+S.figure('oae',lang)+'</div>'+S.figure('eec',lang)+'</div>');
-    h+=sec('hip',n++,'<div class="card hl"><h3>'+e(L.hypT)+'</h3><p>'+e(X.hip)+'</p></div><div class="card"><h3>'+e(L.novT)+'</h3><p>'+e(X.nov)+'</p></div>');
+    h+=sec('hip',n++,'<div class="card hl"><h3>'+e(L.hypT)+'</h3><p>'+e(L.hyp)+'</p></div><div class="card"><h3>'+e(L.novT)+'</h3><p>'+e(L.nov)+'</p></div>');
     h+=sec('obj',n++,'<div class="goals">'+X.og.map(function(g){return '<div class="og"><span class="c">'+g[0]+' · '+e(g[2])+'</span><h3>'+e(g[1])+'</h3><ul>'+g[3].map(function(o){return '<li><b>'+o[0]+'</b>'+e(o[1])+'</li>';}).join('')+'</ul></div>';}).join('')+'<div class="card hl"><p>'+e(X.synth)+'</p></div></div>');
     h+=sec('met',n++,'<div class="tbl"><table><tbody>'+X.met.map(function(m){return '<tr><td class="k">'+m[0]+'</td><td>'+e(m[1])+'</td></tr>';}).join('')+'</tbody></table></div>');
     h+=sec('mat',n++,'<div class="tbl"><table><thead><tr><th>'+(lang==='es'?'Sección':'Section')+'</th><th>'+(lang==='es'?'Tipo y situación':'Type and setting')+'</th><th>'+(lang==='es'?'Episodios':'Episodes')+'</th><th>'+(lang==='es'?'Interés':'Relevance')+'</th></tr></thead><tbody>'+S.sites.map(function(x){return '<tr><td><b>'+e(x.n)+'</b></td><td>'+e(x.kind[lang])+'</td><td class="mono">'+e(x.tag.join(', ')||'—')+'</td><td>'+e(x.d[lang])+'</td></tr>';}).join('')+'</tbody></table></div><p class="mono" style="color:var(--muted)">'+e(X.matNote)+'</p>'+S.figure('cau',lang));
-    var g='<div class="tbl gantt"><table><thead><tr><th>'+X.plan[0]+'</th><th>'+X.plan[1]+'</th><th>'+X.plan[2]+'</th>';
-    for(var q=1;q<=12;q++) g+='<th class="q">'+L.planUnit+q+'</th>';
-    g+='</tr></thead><tbody>'+tasks.map(function(t){var r='<tr><td class="k">'+t[0]+'</td><td>'+e(lang==='es'?t[1]:t[2])+'</td><td class="mono" style="font-size:.74rem">'+e(t[3])+'</td>'; for(var q=1;q<=12;q++){r+='<td class="q">'+(q>=t[4]&&q<=t[5]?'<span class="'+(q===t[4]?'s ':'')+(q===t[5]?'e':'')+'"></span>':'')+'</td>';} return r+'</tr>';}).join('')+'</tbody></table></div>';
-    g+='<div class="ms">'+S.milestones.map(function(m){return '<span><b>'+m.h+' · '+L.planUnit+m.t+'</b>'+e(m[lang])+'</span>';}).join('')+'</div>';
-    h+=sec('plan',n++,g);
     var t='';
     ['research','work','collab'].forEach(function(k){t+='<h3 style="margin-top:8px">'+e(L.teamGroups[k])+'</h3><div class="tbl"><table><thead><tr>'+X.teamCols.map(function(c){return '<th>'+c+'</th>';}).join('')+'</tr></thead><tbody>'+S.people[k].map(function(p){return '<tr><td class="k">'+(codes[p.n]||'')+'</td><td><b>'+e(p.n)+'</b></td><td>'+e(p.i)+'</td><td>'+e(p.f[lang])+'</td><td class="mono">'+(p.o?'<a href="https://orcid.org/'+p.o+'" target="_blank" rel="noopener noreferrer">'+p.o+'</a>':p.sc?'<a href="https://www.scopus.com/authid/detail.uri?authorId='+p.sc+'" target="_blank" rel="noopener noreferrer">Scopus '+p.sc+'</a>':'—')+'</td></tr>';}).join('')+'</tbody></table></div>';});
     h+=sec('equipo',n++,t);
-    h+=sec('prev',n++,'<p>'+e(X.prevIntro)+'</p><div class="tbl"><table><tbody>'+S.record.map(function(r){return '<tr><td class="k">'+r.y+'</td><td>'+e(r[lang])+'</td></tr>';}).join('')+'</tbody></table></div>');
     h+=sec('pubs',n++,S.pubs.length?'<ol class="refs pubs">'+S.pubs.map(function(p){return '<li><b>'+e(p.t)+'</b>. <i>'+e(p.j)+'</i>, '+p.y+'. <a href="https://doi.org/'+p.doi+'" target="_blank" rel="noopener noreferrer">doi:'+p.doi+'</a></li>';}).join('')+'</ol>':'<p class="empty">'+e(X.pubsEmpty)+'</p>');
     h+=sec('refs',n++,'<ol class="refs">'+refs.map(function(r){return '<li>'+e(r[0])+(r[1]?' <a href="https://doi.org/'+r[1]+'">doi:'+r[1]+'</a>':'')+'</li>';}).join('')+'</ol>');
     h+='</main></div><footer><div class="wrap">'+S.logos()+'<span>'+e(L.fundingLine)+'</span><span>'+e(L.funder)+'</span></div></footer><div class="pxsband"><div class="wrap">'+S.credit(lang)+'</div></div>';

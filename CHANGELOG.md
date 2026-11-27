@@ -7,7 +7,7 @@ Formato: [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) · versione
 - Textos revisados de la portada, «Por qué estudiarlo», «Qué aporta de nuevo», hipótesis y ciclos orbitales (Milankovitch), con su traducción al inglés.
 - Título del modelo 3D: «¿Cómo se “ahoga” un océano?».
 - Web divulgativa: fuera el cronograma y «25 años de trabajo previo».
-- Web técnica: fuera «Laboratorios y equipamiento», «Producción prevista» y «Gestión de datos».
+- Web técnica: fuera «Laboratorios y equipamiento», «Producción prevista» y «Gestión de datos»; también «Plan de trabajo» y «Resultados previos» (equivalentes al cronograma y a la trayectoria). Hipótesis y novedad con los textos revisados por el cliente.
 - Lugares: fuera L’Alcoraia; El Pui con foto real del proyecto.
 - Equipo de trabajo: Paula Granero (Universität Wien) y Aluana Schleder (Universidade Federal do Paraná, con enlace a Scopus).
 

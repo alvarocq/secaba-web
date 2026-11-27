@@ -251,7 +251,7 @@ section{padding-block:clamp(64px,9vw,120px)}
 <body>
 <div class="heat" aria-hidden="true"><i id="heat"></i></div>
 <div id="app"></div>
-<script src="content.js?v=20261127a"></script>
+<script src="content.js?v=20261127b"></script>
 <script>
 (function(){
   var S=SECABA, e=S.esc, lang=S.getLang();
@@ -284,7 +284,7 @@ section{padding-block:clamp(64px,9vw,120px)}
     var L=S.T[lang], x=X[lang], n=L.nav; S.setLang(lang); var h='';
     var nav=[['modelo',lang==='es'?'Modelo 3D':'3D model'],['episodios',n.episodes],['testigo',lang==='es'?'Testigo 3D':'3D core'],['objetivos',n.goals],['lugares',n.sites],['equipo',n.team],['contacto',n.contact]];
     h+='<div class="topbar"><div class="wrap"><header class="bar"><span class="logo">SECABA</span><nav aria-label="Secciones">'+nav.map(function(a){return '<a href="#'+a[0]+'">'+e(a[1])+'</a>';}).join('')+'</nav><div class="tools"><a class="lang" href="tecnica.html" style="text-decoration:none">'+(lang==='es'?'Especialistas':'Specialists')+'</a><button class="lang ico-btn" id="theme" type="button"></button><button class="lang" id="lang" type="button" aria-label="'+e(L.otherLabel)+'">'+L.other+'</button></div></header></div></div>';
-    var tech=lang==='es'?{b:'Web para especialistas',d:'Antecedentes, objetivos específicos, metodología, plan de trabajo y bibliografía.'}:{b:'Website for specialists',d:'Background, specific aims, methods, work plan and references.'};
+    var tech=lang==='es'?{b:'Web para especialistas',d:'Antecedentes, objetivos específicos, metodología, equipo y bibliografía.'}:{b:'Website for specialists',d:'Background, specific aims, methods, team and references.'};
     h+='<main><div class="hero wrap"><div id="coco3d" class="coco3d" aria-hidden="true"></div><p class="mono">'+e(x.h1[0])+' '+e(x.h1[1])+'</p><p class="kind">'+(lang==='es'?'Proyecto de investigación · Universidad de Jaén':'Research project · University of Jaén')+'</p><h1><span>SECABA</span></h1><p class="ptitle">'+e(L.title)+'</p><p class="psub">'+e(L.subtitle)+'</p><div class="row"><p class="lead">'+e(L.lead)+'</p><div><a class="cta" href="tecnica.html"><b>'+e(tech.b)+' →</b><span>'+e(tech.d)+'</span></a><div class="ref mono"><span>'+e(L.ref)+'</span><span>'+e(L.host)+'</span><span>'+e(L.duration)+'</span><span class="todo">'+e(L.datesTodo)+'</span></div></div></div></div>';
     h+='<div class="wrap"><div class="facts">'+L.facts.map(function(f){return '<div class="fact"><b>'+e(f.v)+'<small>'+e(f.u)+'</small></b><p>'+e(f.d)+'</p></div>';}).join('')+'</div></div>';
     // Hipótesis destacada: primera frase como titular y los tres factores de control
@@ -362,8 +362,8 @@ section{padding-block:clamp(64px,9vw,120px)}
 })();
 </script>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
-<script type="module" src="js/cocolito.js?v=20261127a"></script>
-<script type="module" src="js/testigo3d.js?v=20261127a"></script>
-<script type="module" src="js/oae3d.js?v=20261127a"></script>
+<script type="module" src="js/cocolito.js?v=20261127b"></script>
+<script type="module" src="js/testigo3d.js?v=20261127b"></script>
+<script type="module" src="js/oae3d.js?v=20261127b"></script>
 </body>
 </html>
