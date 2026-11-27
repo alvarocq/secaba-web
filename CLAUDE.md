@@ -22,7 +22,7 @@ Publicación: GitHub Pages desde `main` (raíz). El repo es público porque Page
 - Figuras 1 y 2 (Jenkyns 2010, Föllmi 2012) tienen derechos de editorial: pedir permiso o redibujar.
 - Fotos de lugares: `img` = foto real del proyecto (sin distintivo; de momento solo El Pui); `exImg` = foto de ejemplo de la web PY20_00783, marcada «Foto de ejemplo». Posiciones del mapa aproximadas.
 - Equipo: `o` = ORCID; si no hay, `sc` = Scopus ID (enlace a scopus.com).
-- Decisiones del cliente (27-11-2026): sin cronograma ni «25 años de trabajo previo» en la divulgativa; sin laboratorios, producción prevista ni gestión de datos en la técnica; L’Alcoraia fuera de los lugares.
+- Decisiones del cliente (27-11-2026): sin cronograma ni «25 años de trabajo previo» en la divulgativa; sin laboratorios, producción prevista, gestión de datos, plan de trabajo ni resultados previos en la técnica (su hipótesis y novedad usan `hyp`/`nov` de `content.js`, los mismos que la divulgativa); L’Alcoraia fuera de los lugares.
 - Modelo 3D del evento anóxico (`js/oae3d.js`): recreación propia del esquema de Jenkyns (2010); la figura 1 original sigue solo en la web técnica. Textos de los pasos pendientes de revisión por el equipo. Usa import map (`three` y `three/addons/`) definido en `index.html`.
 - Testigo de Cau en 3D: capas, posiciones de los hitos y curva de δ13C son un ESQUEMA (`KEYS` y bucle de capas en `js/testigo3d.js`). Sustituir por los datos reales del sondeo (CSV de δ13C/Os y litología) cuando el equipo los pase.
 - El Carniense (CPE) que aparece en la memoria se ha dejado fuera a propósito.
