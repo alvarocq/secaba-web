@@ -6,7 +6,7 @@
 <!-- Modo claro por defecto; se respeta la elección guardada del visitante -->
 <script>(function(){var t="light";try{var s=localStorage.getItem("secaba-theme");if(s==="dark"||s==="light")t=s;}catch(e){}document.documentElement.setAttribute("data-theme",t);})();</script>
 <title>SECABA · Técnica</title>
-<meta name="description" content="SECABA (PID2023-151264NB-I00): información técnica para especialistas. Antecedentes, objetivos, metodología, plan de trabajo, laboratorios y bibliografía.">
+<meta name="description" content="SECABA (PID2023-151264NB-I00): información técnica para especialistas. Antecedentes, objetivos, metodología, plan de trabajo y bibliografía.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -110,7 +110,7 @@ footer span{opacity:.8}
 </head>
 <body>
 <div id="app"></div>
-<script src="content.js?v=20261109g"></script>
+<script src="content.js?v=20261127a"></script>
 <script>
 (function(){
   var S=SECABA, e=S.esc, lang=S.getLang();
@@ -120,7 +120,7 @@ footer span{opacity:.8}
   var MOON='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>';
 
   // Códigos de miembros, como en la memoria
-  var codes={"José Manuel Castro Jiménez":"JMC","Ginés A. de Gea Guillén":"GAG","María Luisa Quijano López":"MLQ","Pedro A. Ruiz Ortiz":"PARO","Cristina Sequero López":"CSL","Luis O’Dogherty Luy":"LOL","Richard D. Pancost":"RDP","B. David A. Naafs":"DN","Claudia Sosa Montes de Oca":"CSM","Lawrence Percival":"LP","Rafael Martínez-Rodríguez":"RMR","Sandro Froehner":"SF","Josep A. Moreno-Bedmar":"JAMB","Miguel Company Sempere":"MC","Sietske Batenburg":"SB","Marta Rodrigo Gámiz":"MR","Mathieu Martinez":"MM","Vicente López Sánchez-Vizcaíno":"VLS","Helmut Weissert":"HW","Ian Jarvis":"IJ","David Selby":"DS"};
+  var codes={"Paula Granero":"PG","Aluana Schleder":"AS","José Manuel Castro Jiménez":"JMC","Ginés A. de Gea Guillén":"GAG","María Luisa Quijano López":"MLQ","Pedro A. Ruiz Ortiz":"PARO","Cristina Sequero López":"CSL","Luis O’Dogherty Luy":"LOL","Richard D. Pancost":"RDP","B. David A. Naafs":"DN","Claudia Sosa Montes de Oca":"CSM","Lawrence Percival":"LP","Rafael Martínez-Rodríguez":"RMR","Sandro Froehner":"SF","Josep A. Moreno-Bedmar":"JAMB","Miguel Company Sempere":"MC","Sietske Batenburg":"SB","Marta Rodrigo Gámiz":"MR","Mathieu Martinez":"MM","Vicente López Sánchez-Vizcaíno":"VLS","Helmut Weissert":"HW","Ian Jarvis":"IJ","David Selby":"DS"};
 
   // Tareas del cronograma (trimestres 1–12)
   var tasks=[
@@ -199,7 +199,7 @@ footer span{opacity:.8}
       ],
       matNote:"Posiciones y fotografías de campo pendientes de confirmar por el equipo.",
       plan:["Código","Tarea","Responsables · colaboran"],
-      teamCols:["Código","Nombre","Institución","Especialidad","ORCID"],
+      teamCols:["Código","Nombre","Institución","Especialidad","ORCID / Scopus"],
       labsUJA:"Universidad de Jaén (CEACTEMA, Dpto. de Geología, CIC)",
       labsUJAlist:["Molinos, hornos mufla y preparación de láminas delgadas","Microscopios petrográficos Leica DM2500 y Olympus BHSP; estereomicroscopios Leica M205 C y Olympus SZX16","Calcímetro automático Dream Électronique; susceptibilímetro Bartington MS2E","Soxhlet, rotavapor Büchi R-210, cromatógrafos de gases Shimadzu, GC-MS Thermo DSQ II y HPLC-MS Thermo TSQ Quantum","Analizador elemental CHNS-O, ICP-MS Agilent 7500 y FRX Bruker S4 Pioneer"],
       labsExt:"Laboratorios externos",
@@ -243,7 +243,7 @@ footer span{opacity:.8}
       ],
       matNote:"Site positions and field photographs pending confirmation by the team.",
       plan:["Code","Task","Lead · contributors"],
-      teamCols:["Code","Name","Institution","Expertise","ORCID"],
+      teamCols:["Code","Name","Institution","Expertise","ORCID / Scopus"],
       labsUJA:"University of Jaén (CEACTEMA, Department of Geology, CIC)",
       labsUJAlist:["Mills, muffle furnaces and thin-section preparation","Leica DM2500 and Olympus BHSP petrographic microscopes; Leica M205 C and Olympus SZX16 stereomicroscopes","Dream Électronique automatic calcimeter; Bartington MS2E susceptibility meter","Soxhlet, Büchi R-210 rotary evaporator, Shimadzu gas chromatographs, Thermo DSQ II GC-MS and Thermo TSQ Quantum HPLC-MS","CHNS-O elemental analyser, Agilent 7500 ICP-MS and Bruker S4 Pioneer XRF"],
       labsExt:"External laboratories",
@@ -260,7 +260,7 @@ footer span{opacity:.8}
   function render(){
     var L=S.T[lang], X=TX[lang], s=X.s; S.setLang(lang);
     document.title='SECABA · '+(lang==='es'?'Técnica':'Technical');
-    var ids=['ficha','ant','hip','obj','met','mat','plan','equipo','labs','prev','prod','datos','pubs','refs'];
+    var ids=['ficha','ant','hip','obj','met','mat','plan','equipo','prev','pubs','refs'];
     var h='<div class="band"><div class="wrap"><div class="top"><span class="brand">SECABA</span><span class="tag">'+e(X.tag)+'</span><div class="tools"><a class="btn" href="./">←'+e(X.back)+'</a><button class="btn" id="theme" type="button"></button><button class="btn" id="lang" type="button" aria-label="'+e(L.otherLabel)+'">'+L.other+'</button></div></div>';
     h+='<div class="head"><span class="eyebrow">'+e(L.ref)+'</span><h1>'+e(L.title)+': '+e(L.subtitle.charAt(0).toLowerCase()+L.subtitle.slice(1))+'</h1><p class="en">'+(lang==='es'?e(S.T.en.title)+': '+e(S.T.en.subtitle.toLowerCase()):e(S.T.es.title)+': '+e(S.T.es.subtitle.toLowerCase()))+'</p></div></div></div>';
     h+='<div class="wrap layout"><nav class="toc" aria-label="'+e(X.toc)+'"><span class="lbl">'+e(X.toc)+'</span>'+ids.map(function(k,i){return '<a href="#'+k+'">'+(i+1)+'. '+e(s[k])+'</a>';}).join('')+'</nav><main>';
@@ -278,12 +278,9 @@ footer span{opacity:.8}
     g+='<div class="ms">'+S.milestones.map(function(m){return '<span><b>'+m.h+' · '+L.planUnit+m.t+'</b>'+e(m[lang])+'</span>';}).join('')+'</div>';
     h+=sec('plan',n++,g);
     var t='';
-    ['research','work','collab'].forEach(function(k){t+='<h3 style="margin-top:8px">'+e(L.teamGroups[k])+'</h3><div class="tbl"><table><thead><tr>'+X.teamCols.map(function(c){return '<th>'+c+'</th>';}).join('')+'</tr></thead><tbody>'+S.people[k].map(function(p){return '<tr><td class="k">'+(codes[p.n]||'')+'</td><td><b>'+e(p.n)+'</b></td><td>'+e(p.i)+'</td><td>'+e(p.f[lang])+'</td><td class="mono">'+(p.o?'<a href="https://orcid.org/'+p.o+'" target="_blank" rel="noopener noreferrer">'+p.o+'</a>':'—')+'</td></tr>';}).join('')+'</tbody></table></div>';});
+    ['research','work','collab'].forEach(function(k){t+='<h3 style="margin-top:8px">'+e(L.teamGroups[k])+'</h3><div class="tbl"><table><thead><tr>'+X.teamCols.map(function(c){return '<th>'+c+'</th>';}).join('')+'</tr></thead><tbody>'+S.people[k].map(function(p){return '<tr><td class="k">'+(codes[p.n]||'')+'</td><td><b>'+e(p.n)+'</b></td><td>'+e(p.i)+'</td><td>'+e(p.f[lang])+'</td><td class="mono">'+(p.o?'<a href="https://orcid.org/'+p.o+'" target="_blank" rel="noopener noreferrer">'+p.o+'</a>':p.sc?'<a href="https://www.scopus.com/authid/detail.uri?authorId='+p.sc+'" target="_blank" rel="noopener noreferrer">Scopus '+p.sc+'</a>':'—')+'</td></tr>';}).join('')+'</tbody></table></div>';});
     h+=sec('equipo',n++,t);
-    h+=sec('labs',n++,'<div class="card"><h3>'+e(X.labsUJA)+'</h3><ul style="margin:0;padding-left:1.1em;display:grid;gap:4px;font-size:.9rem">'+X.labsUJAlist.map(function(x){return '<li>'+e(x)+'</li>';}).join('')+'</ul></div><div class="card"><h3>'+e(X.labsExt)+'</h3><ul style="margin:0;padding-left:1.1em;display:grid;gap:4px;font-size:.9rem">'+X.labsExtList.map(function(x){return '<li>'+e(x)+'</li>';}).join('')+'</ul></div>');
     h+=sec('prev',n++,'<p>'+e(X.prevIntro)+'</p><div class="tbl"><table><tbody>'+S.record.map(function(r){return '<tr><td class="k">'+r.y+'</td><td>'+e(r[lang])+'</td></tr>';}).join('')+'</tbody></table></div>');
-    h+=sec('prod',n++,'<div class="tbl"><table><tbody>'+X.prod.map(function(p){return '<tr><td class="k" style="font-size:1rem">'+p[0]+'</td><td>'+e(p[1])+'</td></tr>';}).join('')+'</tbody></table></div><ol style="margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:.92rem">'+X.prodTopics.map(function(x){return '<li>'+e(x)+'</li>';}).join('')+'</ol><p style="color:var(--muted);font-size:.9rem">'+e(X.venues)+'</p>');
-    h+=sec('datos',n++,'<ul style="margin:0;padding-left:1.1em;display:grid;gap:4px">'+X.datos.map(function(x){return '<li>'+e(x)+'</li>';}).join('')+'</ul><p><a href="'+S.ruja+'">'+e(L.dataLink)+' →</a></p>');
     h+=sec('pubs',n++,S.pubs.length?'<ol class="refs pubs">'+S.pubs.map(function(p){return '<li><b>'+e(p.t)+'</b>. <i>'+e(p.j)+'</i>, '+p.y+'. <a href="https://doi.org/'+p.doi+'" target="_blank" rel="noopener noreferrer">doi:'+p.doi+'</a></li>';}).join('')+'</ol>':'<p class="empty">'+e(X.pubsEmpty)+'</p>');
     h+=sec('refs',n++,'<ol class="refs">'+refs.map(function(r){return '<li>'+e(r[0])+(r[1]?' <a href="https://doi.org/'+r[1]+'">doi:'+r[1]+'</a>':'')+'</li>';}).join('')+'</ol>');
     h+='</main></div><footer><div class="wrap">'+S.logos()+'<span>'+e(L.fundingLine)+'</span><span>'+e(L.funder)+'</span></div></footer><div class="pxsband"><div class="wrap">'+S.credit(lang)+'</div></div>';
