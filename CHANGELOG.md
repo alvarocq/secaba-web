@@ -3,6 +3,14 @@
 Formato: [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) · versiones [semver](https://semver.org/lang/es/).
 
 ## [Sin publicar]
+### Cambiado (revisión del cliente, 27-11-2026)
+- Textos revisados de la portada, «Por qué estudiarlo», «Qué aporta de nuevo», hipótesis y ciclos orbitales (Milankovitch), con su traducción al inglés.
+- Título del modelo 3D: «¿Cómo se “ahoga” un océano?».
+- Web divulgativa: fuera el cronograma y «25 años de trabajo previo».
+- Web técnica: fuera «Laboratorios y equipamiento», «Producción prevista» y «Gestión de datos».
+- Lugares: fuera L’Alcoraia; El Pui con foto real del proyecto.
+- Equipo de trabajo: Paula Granero (Universität Wien) y Aluana Schleder (Universidade Federal do Paraná, con enlace a Scopus).
+
 ### Añadido
 - Artículos publicados del proyecto (Global and Planetary Change 2026, Palaeo3 2025, Cretaceous Research 2025) con título, revista, año y enlace al DOI, en la web divulgativa (Noticias) y en la técnica (Publicaciones). Los datos están en `pubs` de `content.js`.
 - Web divulgativa (`index.html`): portada SECABA, cifras clave, hipótesis destacada, comparación de CO₂, episodios, objetivos, métodos, mapa de lugares, cronograma, trayectoria, equipo y divulgación.

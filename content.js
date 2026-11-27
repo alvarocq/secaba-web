@@ -17,7 +17,9 @@
       { n: "Rafael Martínez-Rodríguez", i: "Universidad Complutense de Madrid", f: { es: "Astrocronología", en: "Astrochronology" }, o: "0000-0002-7249-4172" },
       { n: "Sandro Froehner", i: "Universidade Federal do Paraná", f: { es: "Biomarcadores", en: "Biomarkers" }, o: "0000-0003-1249-7512" },
       { n: "Josep A. Moreno-Bedmar", i: "UNAM, México", f: { es: "Ammonites", en: "Ammonites" }, o: "0000-0001-8426-2750" },
-      { n: "Miguel Company Sempere", i: "Universidad de Granada", f: { es: "Ammonites", en: "Ammonites" }, o: "0000-0002-4944-8928" }
+      { n: "Miguel Company Sempere", i: "Universidad de Granada", f: { es: "Ammonites", en: "Ammonites" }, o: "0000-0002-4944-8928" },
+      { n: "Paula Granero", i: "Universität Wien", f: { es: "Nanofósiles", en: "Nannofossils" }, o: "0000-0001-8347-9325" },
+      { n: "Aluana Schleder", i: "Universidade Federal do Paraná", f: { es: "Biomarcadores", en: "Biomarkers" }, sc: "57195355359" }
     ],
     collab: [
       { n: "Sietske Batenburg", i: "Universitat de Barcelona", f: { es: "Astrocronología", en: "Astrochronology" }, o: "0000-0002-4076-1248" },
@@ -38,9 +40,8 @@
     { id: "cavila", n: "Barranco de Cavila", img: null, exImg: "sec-cavila.jpg", x: 68, y: 68, tag: ["IFeNE", "Taxy"], kind: { es: "Sección · Subbético", en: "Section · Subbetic" }, d: { es: "Donde el equipo identificó la IFeNE y caracterizó la ISNE con curvas de δ13C y δ18O de alta resolución.", en: "Where the team identified the IFeNE and characterised the ISNE with high-resolution δ13C and δ18O curves." } },
     { id: "cortijo", n: "Cortijo del Hielo", img: null, exImg: "sec-cortijo.jpg", x: 60, y: 76, tag: ["Taxy"], kind: { es: "Sección · Subbético", en: "Section · Subbetic" }, d: { es: "Isótopos de C de baja resolución y bioestratigrafía precisa indican el Episodio Taxy.", en: "Low-resolution C isotopes and precise biostratigraphy point to the Taxy Episode." } },
     { id: "argos", n: "Río Argos-6", img: null, exImg: "sec-argos.jpg", x: 67, y: 64, tag: ["IFeNE"], kind: { es: "Sección · Subbético", en: "Section · Subbetic" }, d: { es: "Resultados preliminares indican la IFeNE, que sería así una perturbación al menos regional.", en: "Preliminary results point to the IFeNE, making it at least a regional perturbation." } },
-    { id: "alcoraia", n: "L’Alcoraia", img: null, x: 82, y: 66, tag: ["IFeNE?", "Taxy"], kind: { es: "Sección · Prebético, Alicante", en: "Section · Prebetic, Alicante" }, d: { es: "Plataforma prebética donde probablemente se registran la IFeNE y el Taxy.", en: "Prebetic platform that probably records the IFeNE and Taxy." } },
     { id: "seguili", n: "Seguilí", img: null, x: 79, y: 60, tag: [], kind: { es: "Sección · Alicante", en: "Section · Alicante" }, d: { es: "Campaña de campo larga prevista para su muestreo.", en: "A long field campaign is planned to sample it." } },
-    { id: "pui", n: "El Pui", img: null, x: 80, y: 18, tag: ["Taxy?", "OAE 1a"], kind: { es: "Sección · Lleida", en: "Section · Lleida" }, d: { es: "Sección expandida del Pirineo; campaña de campo larga prevista.", en: "Expanded Pyrenean section; a long field campaign is planned." } }
+    { id: "pui", n: "El Pui", img: "sitio-el-pui.jpg", x: 80, y: 18, tag: ["Taxy?", "OAE 1a"], kind: { es: "Sección · Lleida", en: "Section · Lleida" }, d: { es: "Sección expandida del Pirineo; campaña de campo larga prevista.", en: "Expanded Pyrenean section; a long field campaign is planned." } }
   ];
 
   // Cronograma: trimestres 1–12
@@ -84,7 +85,7 @@
       title: "Sucesión de episodios de cambio ambiental acelerado en el Barremiense superior y Aptiense inferior",
       subtitle: "Registro geoquímico, impacto biótico y factores de control",
       claim: "El clima del pasado como espejo del presente",
-      lead: "Hace entre 122 y 118 millones de años, la Tierra encadenó varios episodios de calentamiento brusco que culminaron con el Evento Anóxico Oceánico 1a. Estudiamos cómo se sucedieron, qué los provocó y cómo respondió la vida marina, para entender mejor el cambio climático actual.",
+      lead: "Hace entre 122 y 118 millones de años, la Tierra fue afectada por varios episodios de cambios ambientales abruptos relacionados con variaciones en las concentraciones globales de CO₂, que culminaron con el Evento Anóxico Oceánico 1a (119,5 Ma). Estudiamos cómo se sucedieron, qué los provocó y qué consecuencias tuvieron en el medioambiente y en la vida. El estudio de estos cambios ambientales y climáticos registrados en las rocas puede contribuir a un mejor conocimiento del Cambio Global actual, del que se consideran análogos.",
       ref: "Proyecto PID2023-151264NB-I00",
       funder: "Proyectos de Generación de Conocimiento 2023 · Ministerio de Ciencia, Innovación y Universidades",
       host: "Universidad de Jaén · CEACTEMA",
@@ -97,13 +98,14 @@
       ],
       whyT: "Por qué estudiarlo",
       why: [
-        "El clima de la Tierra ha oscilado entre periodos cálidos (greenhouse) y fríos (icehouse). Hoy vivimos un periodo frío al que la actividad humana está añadiendo CO₂ a un ritmo sin precedentes. Los modelos climáticos tienen incertidumbre, y el registro geológico guarda episodios del pasado que sirven como análogos.",
-        "No todas las perturbaciones del ciclo del carbono acabaron en anoxia oceánica. Todos los eventos anóxicos (OAEs) son episodios de cambio ambiental, pero no todos los episodios de cambio ambiental (EECs) se convirtieron en OAEs. SECABA estudia esa sucesión."
+        "El clima de la Tierra ha oscilado entre periodos cálidos (greenhouse) y fríos (icehouse). Hoy vivimos un periodo frío en el que la actividad humana está añadiendo CO₂ a la atmósfera a un ritmo sin precedentes. Los modelos climáticos tienen incertidumbre, y el registro geológico guarda información sobre episodios del pasado que sirven como análogos.",
+        "Una característica muy significativa de los eventos anóxicos es que se asocian a un incremento global de las temperaturas, por lo que también se conocen como hipertermales.",
+        "SECABA estudia esa sucesión de perturbaciones del ciclo del carbono, y su relación con la anoxia oceánica y episodios hipertermales, ocurrida entre el Barremiense superior y el Aptiense inferior."
       ],
       hypT: "Hipótesis",
-      hyp: "Estos episodios forman un proceso general del Sistema Tierra en condiciones de invernadero extremo. Están formados por eventos cortos, unos ligados a pulsos volcánicos y otros a emisiones de metano, posiblemente modulados por ciclos orbitales.",
+      hyp: "Estos episodios forman parte de un proceso a largo plazo en el Sistema Tierra, bajo condiciones de efecto invernadero acentuado. Se trata de eventos sucesivos de corta duración, relacionados con pulsos en la actividad volcánica y emisiones de metano, afectados por otros factores como la respuesta de la vegetación, la meteorización o las corrientes marinas, posiblemente modulados por ciclos orbitales.",
       novT: "Qué aporta de nuevo",
-      nov: "Por primera vez se estudia el OAE 1a como una sucesión de eventos singulares, a ultra alta resolución en el pico negativo de δ13C elegido como base del Aptiense.",
+      nov: "Por primera vez se estudia el OAE 1a y el intervalo de tiempo precedente como una sucesión de eventos singulares, a ultra alta resolución, para establecer las relaciones entre ellos.",
       episodesT: "Tres episodios encadenados",
       episodes: [
         { k: "IFeNE", n: "Excursión Intra-Feraudianus", age: "Barremiense superior", d: "Excursión isotópica negativa bautizada por el propio equipo en 2022. Hallada en Barranco de Cavila y probablemente en Río Argos-6 y L’Alcoraia. ¿Es la fase inicial del Taxy o un episodio distinto?" },
@@ -155,7 +157,7 @@
       copy: "Copiar", copied: "Copiado",
       fundingLine: "Proyecto PID2023-151264NB-I00 financiado por MICIU/AEI/10.13039/501100011033 [revisar fórmula exacta de la resolución].",
       datesTodo: "Fechas de inicio y fin pendientes",
-      photoNote: "Las fotos de los lugares son de ejemplo, a la espera de las del proyecto.", exPhoto: "Foto de ejemplo",
+      photoNote: "Las fotos de lugares marcadas como «Foto de ejemplo» son provisionales, a la espera de las del proyecto.", exPhoto: "Foto de ejemplo",
       imgAlt: { portada: "Ladera de una sección estratigráfica con fósiles guía superpuestos", nivel: "Nivel oscuro rico en materia orgánica bajo capas de caliza, con un martillo como escala", carbonero: "Vista de la sección de Carbonero" }
     },
     en: {
@@ -165,7 +167,7 @@
       title: "Succession of episodes of accelerated environmental change in the Late Barremian and Early Aptian",
       subtitle: "Geochemical record, biotic impact and controlling factors",
       claim: "Past climate as a mirror of the present",
-      lead: "Between 122 and 118 million years ago, the Earth went through a chain of abrupt warming episodes that culminated in Oceanic Anoxic Event 1a. We study how they unfolded, what triggered them and how marine life responded, to better understand today’s climate change.",
+      lead: "Between 122 and 118 million years ago, the Earth was affected by several episodes of abrupt environmental change linked to variations in global CO₂ concentrations, culminating in Oceanic Anoxic Event 1a (119.5 Ma). We study how they unfolded, what triggered them and what consequences they had for the environment and for life. Studying these environmental and climatic changes recorded in the rocks can contribute to a better understanding of today’s Global Change, of which they are considered analogues.",
       ref: "Project PID2023-151264NB-I00",
       funder: "Knowledge Generation Projects 2023 · Spanish Ministry of Science, Innovation and Universities",
       host: "University of Jaén · CEACTEMA",
@@ -178,13 +180,14 @@
       ],
       whyT: "Why it matters",
       why: [
-        "Earth’s climate has swung between warm (greenhouse) and cold (icehouse) states. We now live in a cold state to which human activity is adding CO₂ at an unprecedented rate. Climate models carry uncertainty, and the geological record preserves past episodes that act as analogues.",
-        "Not every carbon-cycle perturbation ended in ocean anoxia. All anoxic events (OAEs) are episodes of environmental change, but not all episodes of environmental change (EECs) became OAEs. SECABA studies that succession."
+        "Earth’s climate has swung between warm (greenhouse) and cold (icehouse) periods. We now live in a cold period in which human activity is adding CO₂ to the atmosphere at an unprecedented rate. Climate models carry uncertainty, and the geological record preserves information about past episodes that act as analogues.",
+        "A very significant feature of anoxic events is that they are associated with a global rise in temperatures, which is why they are also known as hyperthermals.",
+        "SECABA studies this succession of carbon-cycle perturbations, and their relationship with ocean anoxia and hyperthermal episodes, between the Late Barremian and the Early Aptian."
       ],
       hypT: "Hypothesis",
-      hyp: "These episodes form a general Earth-system process under extreme greenhouse conditions. They consist of short events, some linked to volcanic pulses and others to methane release, possibly paced by orbital cycles.",
+      hyp: "These episodes are part of a long-term process in the Earth system, under enhanced greenhouse conditions. They are successive short-lived events, related to pulses of volcanic activity and methane release, influenced by other factors such as the response of vegetation, weathering or ocean currents, and possibly paced by orbital cycles.",
       novT: "What is new",
-      nov: "For the first time, OAE 1a is studied as a succession of distinct events, at ultra-high resolution across the negative δ13C peak chosen as the base of the Aptian.",
+      nov: "For the first time, OAE 1a and the preceding time interval are studied as a succession of distinct events, at ultra-high resolution, to establish the relationships between them.",
       episodesT: "Three linked episodes",
       episodes: [
         { k: "IFeNE", n: "Intra-Feraudianus Excursion", age: "Late Barremian", d: "A negative isotope excursion named by the team in 2022. Found at Barranco de Cavila and probably at Río Argos-6 and L’Alcoraia. Is it the onset of Taxy or a separate episode?" },
@@ -236,7 +239,7 @@
       copy: "Copy", copied: "Copied",
       fundingLine: "Project PID2023-151264NB-I00 funded by MICIU/AEI/10.13039/501100011033 [check exact wording in the award].",
       datesTodo: "Start and end dates pending",
-      photoNote: "Site photos are examples until the project’s own photos are available.", exPhoto: "Example photo",
+      photoNote: "Site photos marked «Example photo» are placeholders until the project’s own photos are available.", exPhoto: "Example photo",
       imgAlt: { portada: "Hillside of a stratigraphic section with index fossils overlaid", nivel: "Dark organic-rich layer below limestone beds, with a hammer for scale", carbonero: "View of the Carbonero section" }
     }
   };

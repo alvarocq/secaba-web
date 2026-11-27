@@ -10,7 +10,7 @@ const lang = () => (document.documentElement.lang === "en" ? "en" : "es");
 // ---------------- Textos ----------------
 const TX = {
   es: {
-    kick: "Modelo 3D", title: "¿Cómo se ahoga un océano?",
+    kick: "Modelo 3D", title: "¿Cómo se “ahoga” un océano?",
     intro: "Así funciona un evento anóxico oceánico, paso a paso. Es una recreación del modelo de Jenkyns (2010): avanza por los pasos y gira la escena para verla desde cualquier ángulo.",
     hintMouse: "Arrastra para girar", hintTouch: "Usa dos dedos para girar",
     overview: "Vista general", labels: "Etiquetas", prev: "← Anterior", next: "Siguiente →", play: "▶ Reproducir", pause: "❚❚ Pausa",
@@ -33,7 +33,7 @@ const TX = {
     ]
   },
   en: {
-    kick: "3D model", title: "How does an ocean suffocate?",
+    kick: "3D model", title: "How does an ocean “suffocate”?",
     intro: "How an oceanic anoxic event works, step by step. A recreation of Jenkyns’s (2010) model: move through the steps and rotate the scene to see it from any angle.",
     hintMouse: "Drag to rotate", hintTouch: "Use two fingers to rotate",
     overview: "Overview", labels: "Labels", prev: "← Previous", next: "Next →", play: "▶ Play", pause: "❚❚ Pause",
